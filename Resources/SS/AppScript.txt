@@ -1,0 +1,78 @@
+function Compare() {
+  var spreadsheet = SpreadsheetApp.getActive();
+  var damage = spreadsheet.getSheetByName("CalcDamage");
+  var comparison = spreadsheet.getSheetByName("WeaponsComparison");
+  spreadsheet.setActiveSheet(comparison);
+  var shift = comparison.getRange("L37").getValue();
+  var labels = ["(B) ", "(Q) ", "(AA) "];
+  // var values = damage.getRange("F2").getDataValidation().getCriteriaValues()[0].getValues();
+  var values = comparison.getRange("H33:H").getValues();
+  if (comparison.getRange("L36").getValue()) {
+    comparison.getRange("A:F").clear();
+  }
+  var startLetter = "L";
+  for (var j = 33; j < 36; j++) {
+    var result = comparison.getRange(startLetter + j).getValue();
+    if (!result) {
+        continue;
+    }
+    if (j == 33) {
+      damage.getRange("B25").setValue("FALSE");
+      damage.getRange("G5").setValue("TRUE");
+      damage.getRange("G23").setValue("FALSE");
+    } else if (j == 34) {
+      damage.getRange("B25").setValue("TRUE");
+      damage.getRange("G5").setValue("FALSE");
+      damage.getRange("G23").setValue("FALSE");
+    } else {
+      damage.getRange("B25").setValue("FALSE");
+      damage.getRange("G5").setValue("FALSE");
+      damage.getRange("G23").setValue("TRUE");
+    }
+    eStart = 33;
+    for (var i = 0; i < values.length; i++) {
+      var weaponName = values[i][0];
+      if (weaponName.length == 0) {
+        break;
+      }
+      var explosive = comparison.getRange("I" + (eStart + i)).getValue();
+      var isTrue = comparison.getRange("G" + (eStart + i)).getValue();
+      var prime = comparison.getRange("J" + (eStart + i)).getValue();
+      if (!isTrue) {
+        continue;
+      }
+      if (explosive > 0) {
+        damage.getRange("G21").setValue("TRUE");
+        damage.getRange("H21").setValue(explosive);
+      } else {
+        damage.getRange("G21").setValue("FALSE");
+      }
+      if (prime) {
+        damage.getRange("G9").setValue("TRUE");
+      } else {
+        damage.getRange("G9").setValue("FALSE");
+      }
+      var nameRange1 = "A" + shift;
+      var timeRange1 = "B" + shift;
+      var nameRange2 = "C" + shift;
+      var timeRange2 = "D" + shift;
+      var nameRange3 = "E" + shift;
+      var timeRange3 = "F" + shift;
+      damage.getRange("F2").setValue(weaponName);
+      SpreadsheetApp.flush();
+      var wName = labels[j - 33] + weaponName;
+      comparison.getRange(nameRange1).setValue(wName);
+      comparison.getRange(nameRange2).setValue(wName);
+      comparison.getRange(nameRange3).setValue(wName);
+      damage.getRange("S21").copyTo(comparison.getRange(timeRange1), SpreadsheetApp.CopyPasteType.PASTE_VALUES, false);
+      damage.getRange("G9").setValue("FALSE");
+      SpreadsheetApp.flush();
+      damage.getRange("S22").copyTo(comparison.getRange(timeRange2), SpreadsheetApp.CopyPasteType.PASTE_VALUES, false);
+      damage.getRange("S23").copyTo(comparison.getRange(timeRange3), SpreadsheetApp.CopyPasteType.PASTE_VALUES, false);
+      shift++;
+    }
+  }
+  comparison.getRange("A1:B1000").sort(2);
+  comparison.getRange("C1:D1000").sort(4);
+  comparison.getRange("E1:F1000").sort(6);
+};
