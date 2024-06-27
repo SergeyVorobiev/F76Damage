@@ -1,4 +1,41 @@
 ID,Name,ID,AppType,Property,Val1,Val2,Curve
+0075c3b7,mod_custom_V63-BERTHA_customName,0075c3b7
+,,0075c3b7,MullAdd,AmmoCapacity,1.0,0.0,
+0075c3b8,mod_custom_RedTerror_customName,0075c3b8
+,,0075c3b8,MullAdd,AmmoCapacity,1.0,0.0,
+0075c3b9,mod_custom_V63ShockBaton_custom,0075c3b9
+,,0075c3b9,MullAdd,DamageTypeValues,Energy,1.0,
+00759b4c,mod_custom_TickettoRevenge_custom,00759b4c
+,,00759b4c,MullAdd,AmmoCapacity,1.0,0.0,
+0072df07,mod_melee_StormCutter,0072df07
+,,0072df07,Add,DamageTypeValues,Energy,45.0,
+0072aece,mod_10mmSMG_muzzle_suppressor_Base,0072aece
+,,0027ac19,MullAdd,RecoilMaxDegree,-0.125,0.0,
+,,0027ac19,MullAdd,RecoilMinDegree,-0.125,0.0,
+,,0027ac19,MullAdd,MaxRange,-1.5,0.0,
+,,0027ac19,MullAdd,MinRange,-0.75,0.0,
+,,0027ac19,MullAdd,Weight,0.125,0.0,
+,,0027ac19,MullAdd,Value,0.8,0.0,
+,,0027ac19,MullAdd,RecoilShotsForRunaway,0.5,0.0,
+,,0027ac19,Add,Durability,-8,0,
+0072aecc,mod_10mmSMG_InternalSuppressor,0072aecc
+,,0027ac19,MullAdd,RecoilMaxDegree,-0.125,0.0,
+,,0027ac19,MullAdd,RecoilMinDegree,-0.125,0.0,
+,,0027ac19,MullAdd,MaxRange,-1.5,0.0,
+,,0027ac19,MullAdd,MinRange,-0.75,0.0,
+,,0027ac19,MullAdd,Weight,0.125,0.0,
+,,0027ac19,MullAdd,Value,0.8,0.0,
+,,0027ac19,MullAdd,RecoilShotsForRunaway,0.5,0.0,
+,,0027ac19,Add,Durability,-8,0,
+,,0072aecc,MullAdd,APCost,-0.5,0.0,
+0072aecb,mod_10mmSMG_SCOPE_Reflex_Base,0072aecb
+,,005249e6,Set,ZoomFOVMult,1.5,0.0,
+,,005249e6,MullAdd,ConIronSights,-0.15,0.0,
+,,005249e6,MullAdd,APCost,-0.15,0.0,
+,,005249e6,MullAdd,SightedTransition,-0.1,0.0,
+,,005249e6,MullAdd,Weight,0.05,0.0,
+,,005249e6,MullAdd,Value,0.25,0.0,
+,,0072aecb,Set,ZoomDataCameraOffsetZ,0.7,0.0,
 0075eac6,mod_Legendary_Weapon1_Melee_CritsHealGroup,0075eac6
 ,,004519f4,MullAdd,Value,1.0,0.0,
 0072a8c1,zzz_mod_Incinerator_Gourmand,0072a8c1
@@ -14,7 +51,7 @@ ID,Name,ID,AppType,Property,Val1,Val2,Curve
 ,,00729bf5,MullAdd,Weight,0.3,0.0,
 ,,00729bf5,MullAdd,Value,0.5,0.0,
 ,,00729bf5,Add,DamageBonusMult,0.0,0.0,"Weapons\WeaponMods\Incinerator_Mod_Napalmer.json
-{'curve': [{'x': 30, 'y': 0.2}, {'x': 40, 'y': 0.3}, {'x': 50, 'y': 0.4}]}"
+{'curve': [{'x': 30, 'y': 0.4}, {'x': 40, 'y': 0.4}, {'x': 50, 'y': 0.4}]}"
 ,,00729bf5,Add,Durability,-8,0,
 00729bf4,mod_Cremator_MagTank_Large,00729bf4
 ,,00729bf4,MullAdd,APCost,0.1,0.0,
@@ -45,6 +82,7 @@ ID,Name,ID,AppType,Property,Val1,Val2,Curve
 ,,0027abfa,MullAdd,Value,0.2,0.0,
 ,,0027abfa,Add,Durability,-3,0,
 ,,00729bef,Set,NumProjectiles,4,4,
+,,00729bef,MullAdd,Weight,0.3,0.0,
 ,,00729bef,Add,Durability,-8,0,
 00729bee,_PARENT_mod_GENERIC_Damage_Fire_Half,00729bee
 ,,00729bee,MullAdd,Weight,0.3,0.0,
@@ -74,7 +112,9 @@ ID,Name,ID,AppType,Property,Val1,Val2,Curve
 ,,00729bea,MullAdd,Value,0.4,0.0,
 ,,00729bea,Add,Durability,-8,0,
 ,,00729bea,Add,DamageTypeValues,Fire,0.0,"Weapons\WeaponMods\Incinerator_Mod_Heavy.json
-{'curve': [{'x': 30, 'y': 30}, {'x': 40, 'y': 45}, {'x': 50, 'y': 60}]}"
+{'curve': [{'x': 30, 'y': 60}, {'x': 40, 'y': 80}, {'x': 50, 'y': 100}]}"
+00729be8,mod_Cremator_Reciever_SlowBurner,00729be8
+,,00729be8,MullAdd,Weight,0.1,0.0,
 00729be7,mod_Cremator_BarrelHose_DoubleShot,00729be7
 ,,0027abfa,MullAdd,ConIronSights,-0.25,0.0,
 ,,0027abfa,MullAdd,MaxRange,1.0,0.0,"Weapons\WeaponMods\Weapon_PARENT_Mod_LongRange_MaxRange.json
@@ -84,7 +124,9 @@ ID,Name,ID,AppType,Property,Val1,Val2,Curve
 ,,0027abfa,MullAdd,Value,0.2,0.0,
 ,,0027abfa,Add,Durability,-3,0,
 ,,00729be7,Set,NumProjectiles,2,2,
+,,00729be7,MullAdd,Weight,0.1,0.0,
 ,,00729be7,Add,Durability,-8,0,
+,,00729be7,Add,DamageTypeValues,Fire,40.0,
 006e1312,mod_CircuitBreaker_Grip_Recoil-HipAccuracy,006e1312
 ,,00524415,MullAdd,RecoilMaxDegree,-0.125,0.0,
 ,,00524415,MullAdd,RecoilMinDegree,-0.125,0.0,
@@ -997,26 +1039,30 @@ ID,Name,ID,AppType,Property,Val1,Val2,Curve
 ,,00592e5b,MullAdd,APCost,-0.2,0.0,
 005918f6,_PARENT_mod_melee_weapon_Flaming_Auto,005918f6
 ,,005918f6,MullAdd,Weight,0.05,0.0,
+,,005918f6,MullAdd,AttackDamage,-0.4,0.0,
 ,,005918f6,MullAdd,Value,1.0,0.0,
+,,005918f6,MullAdd,DamageTypeValues,Fire,0.6,
 005918f9,_PARENT_mod_melee_weapon_Turbo,005918f9
 ,,005918f9,Set,Speed,1.5,0.0,
 ,,005918f9,MullAdd,Weight,0.05,0.0,
-,,005918f9,MullAdd,AttackDamage,-0.33,0.0,
+,,005918f9,MullAdd,AttackDamage,-0.5,0.0,
 ,,005918f9,MullAdd,Value,1.0,0.0,
 ,,005918f9,Add,Durability,-2,0,
 005918f7,_PARENT_mod_melee_weapon_Poison_Auto,005918f7
 ,,005918f7,MullAdd,Weight,0.05,0.0,
+,,005918f7,MullAdd,AttackDamage,-0.4,0.0,
 ,,005918f7,MullAdd,Value,1.0,0.0,
+,,005918f7,MullAdd,DamageTypeValues,Poison,0.6,
 005918f8,_PARENT_mod_melee_weapon_Shock_Auto,005918f8
 ,,005918f8,MullAdd,Weight,0.05,0.0,
+,,005918f8,MullAdd,AttackDamage,-0.4,0.0,
 ,,005918f8,MullAdd,Value,1.0,0.0,
-,,005918f8,Add,DamageTypeValues,Electrical,0.0,"Weapons\MeleeMods\Melee_Mod_Shock_Auto.json
-{'curve': [{'x': 1, 'y': 5}, {'x': 50, 'y': 5}, {'x': 100, 'y': 5}]}"
+,,005918f8,MullAdd,DamageTypeValues,Energy,0.6,
 00591668,mod_melee_CattleProd_Shock,00591668
 ,,001793a0,MullAdd,Weight,0.1,0.0,
+,,001793a0,MullAdd,AttackDamage,-0.4,0.0,
 ,,001793a0,MullAdd,Value,2.0,0.0,
-,,001793a0,Add,DamageTypeValues,Energy,0.0,"Weapons\MeleeMods\Melee_Mod_Shock_High.json
-{'curve': [{'x': 1, 'y': 5}, {'x': 50, 'y': 20}, {'x': 100, 'y': 20}]}"
+,,001793a0,MullAdd,DamageTypeValues,Energy,0.6,
 00590fc8,_PARENT_mod_WEAPON_Receiver_PlasmaPulse,00590fc8
 ,,00590fc8,MullAdd,Value,0.4,0.0,
 ,,00590fc8,Add,DamageBonusMult,-0.15,0.0,
@@ -1108,6 +1154,12 @@ ID,Name,ID,AppType,Property,Val1,Val2,Curve
 ,,0027abfd,MullAdd,MinRange,1.0,0.0,"Weapons\WeaponMods\Weapon_PARENT_Mod_ShortRange_MinRange.json
 {'curve': [{'x': 1, 'y': 5}, {'x': 100, 'y': 5}]}"
 ,,0027abfd,MullAdd,Value,0.1,0.0,
+,,004512cd,Set,ZoomFOVMult,1.5,0.0,
+,,004512cd,MullAdd,ConIronSights,-0.15,0.0,
+,,004512cd,MullAdd,APCost,-0.15,0.0,
+,,004512cd,MullAdd,SightedTransition,-0.1,0.0,
+,,004512cd,MullAdd,Weight,0.05,0.0,
+,,004512cd,MullAdd,Value,0.25,0.0,
 005894b1,mod_RegularBow_Bolt_Poison,005894b1
 ,,005723d0,MullAdd,Value,1.0,0.0,
 ,,005723d0,Add,Durability,-5,0,
@@ -1639,42 +1691,46 @@ ID,Name,ID,AppType,Property,Val1,Val2,Curve
 ,,0027abfd,MullAdd,MinRange,1.0,0.0,"Weapons\WeaponMods\Weapon_PARENT_Mod_ShortRange_MinRange.json
 {'curve': [{'x': 1, 'y': 5}, {'x': 100, 'y': 5}]}"
 ,,0027abfd,MullAdd,Value,0.1,0.0,
+,,004512cd,Set,ZoomFOVMult,1.5,0.0,
+,,004512cd,MullAdd,ConIronSights,-0.15,0.0,
+,,004512cd,MullAdd,APCost,-0.15,0.0,
+,,004512cd,MullAdd,SightedTransition,-0.1,0.0,
+,,004512cd,MullAdd,Weight,0.05,0.0,
+,,004512cd,MullAdd,Value,0.25,0.0,
 005723d0,_PARENT_mod_WEAPON_Receiver_AmmoConv_Arrow,005723d0
 ,,005723d0,MullAdd,Value,1.0,0.0,
 ,,005723d0,Add,Durability,-5,0,
 00571d9b,mod_melee_AutoAxe_Poison,00571d9b
 ,,005918f7,MullAdd,Weight,0.05,0.0,
+,,005918f7,MullAdd,AttackDamage,-0.4,0.0,
 ,,005918f7,MullAdd,Value,1.0,0.0,
+,,005918f7,MullAdd,DamageTypeValues,Poison,0.6,
 ,,00571d9b,Set,SecondaryDamage,0.0,0.0,"Weapons\Melee\Weap_AutoAxeDMG.json
-{'curve': [{'x': 1, 'y': 10}, {'x': 5, 'y': 10}, {'x': 10, 'y': 10}, {'x': 15, 'y': 10}, {'x': 20, 'y': 10}, {'x': 25, 'y': 11}, {'x': 30, 'y': 12}, {'x': 35, 'y': 14}, {'x': 40, 'y': 18}, {'x': 45, 'y': 22}, {'x': 50, 'y': 26}]}"
+{'curve': [{'x': 1, 'y': 12}, {'x': 5, 'y': 12}, {'x': 10, 'y': 12}, {'x': 15, 'y': 12}, {'x': 20, 'y': 12}, {'x': 25, 'y': 13}, {'x': 30, 'y': 14}, {'x': 35, 'y': 16}, {'x': 40, 'y': 21}, {'x': 45, 'y': 26}, {'x': 50, 'y': 31}]}"
 ,,00571d9b,MullAdd,Weight,0.025,0.0,
-,,00571d9b,MullAdd,AttackDamage,0.2,0.0,
 ,,00571d9b,MullAdd,Value,0.2,0.0,
-,,00571d9b,Add,DamageTypeValues,Poison,10.0,
 00571d9a,mod_melee_AutoAxe_Burning,00571d9a
 ,,005918f6,MullAdd,Weight,0.05,0.0,
+,,005918f6,MullAdd,AttackDamage,-0.4,0.0,
 ,,005918f6,MullAdd,Value,1.0,0.0,
+,,005918f6,MullAdd,DamageTypeValues,Fire,0.6,
 ,,00571d9a,Set,SecondaryDamage,0.0,0.0,"Weapons\Melee\Weap_AutoAxeDMG.json
-{'curve': [{'x': 1, 'y': 10}, {'x': 5, 'y': 10}, {'x': 10, 'y': 10}, {'x': 15, 'y': 10}, {'x': 20, 'y': 10}, {'x': 25, 'y': 11}, {'x': 30, 'y': 12}, {'x': 35, 'y': 14}, {'x': 40, 'y': 18}, {'x': 45, 'y': 22}, {'x': 50, 'y': 26}]}"
+{'curve': [{'x': 1, 'y': 12}, {'x': 5, 'y': 12}, {'x': 10, 'y': 12}, {'x': 15, 'y': 12}, {'x': 20, 'y': 12}, {'x': 25, 'y': 13}, {'x': 30, 'y': 14}, {'x': 35, 'y': 16}, {'x': 40, 'y': 21}, {'x': 45, 'y': 26}, {'x': 50, 'y': 31}]}"
 ,,00571d9a,MullAdd,Weight,0.025,0.0,
-,,00571d9a,MullAdd,AttackDamage,0.2,0.0,
 ,,00571d9a,MullAdd,Value,0.025,0.0,
-,,00571d9a,Add,DamageTypeValues,Fire,10.0,
 00571d99,mod_melee_AutoAxe_Electrified,00571d99
 ,,005918f8,MullAdd,Weight,0.05,0.0,
+,,005918f8,MullAdd,AttackDamage,-0.4,0.0,
 ,,005918f8,MullAdd,Value,1.0,0.0,
-,,005918f8,Add,DamageTypeValues,Electrical,0.0,"Weapons\MeleeMods\Melee_Mod_Shock_Auto.json
-{'curve': [{'x': 1, 'y': 5}, {'x': 50, 'y': 5}, {'x': 100, 'y': 5}]}"
+,,005918f8,MullAdd,DamageTypeValues,Energy,0.6,
 ,,00571d99,Set,SecondaryDamage,0.0,0.0,"Weapons\Melee\Weap_AutoAxeDMG.json
-{'curve': [{'x': 1, 'y': 10}, {'x': 5, 'y': 10}, {'x': 10, 'y': 10}, {'x': 15, 'y': 10}, {'x': 20, 'y': 10}, {'x': 25, 'y': 11}, {'x': 30, 'y': 12}, {'x': 35, 'y': 14}, {'x': 40, 'y': 18}, {'x': 45, 'y': 22}, {'x': 50, 'y': 26}]}"
+{'curve': [{'x': 1, 'y': 12}, {'x': 5, 'y': 12}, {'x': 10, 'y': 12}, {'x': 15, 'y': 12}, {'x': 20, 'y': 12}, {'x': 25, 'y': 13}, {'x': 30, 'y': 14}, {'x': 35, 'y': 16}, {'x': 40, 'y': 21}, {'x': 45, 'y': 26}, {'x': 50, 'y': 31}]}"
 ,,00571d99,MullAdd,Weight,0.025,0.0,
-,,00571d99,MullAdd,AttackDamage,0.2,0.0,
 ,,00571d99,MullAdd,Value,0.1,0.0,
-,,00571d99,Add,DamageTypeValues,Electrical,10.0,
 00571d9d,mod_melee_AutoAxe_Turbo,00571d9d
 ,,005918f9,Set,Speed,1.5,0.0,
 ,,005918f9,MullAdd,Weight,0.05,0.0,
-,,005918f9,MullAdd,AttackDamage,-0.33,0.0,
+,,005918f9,MullAdd,AttackDamage,-0.5,0.0,
 ,,005918f9,MullAdd,Value,1.0,0.0,
 ,,005918f9,Add,Durability,-2,0,
 ,,00571d9d,MullAdd,Value,0.3,0.0,
@@ -2035,14 +2091,14 @@ ID,Name,ID,AppType,Property,Val1,Val2,Curve
 {'curve': [{'x': 1, 'y': 0.16}, {'x': 50, 'y': 0.16}]}"
 00455830,mod_melee_ShepherdsCrook_Shock,00455830
 ,,001793a0,MullAdd,Weight,0.1,0.0,
+,,001793a0,MullAdd,AttackDamage,-0.4,0.0,
 ,,001793a0,MullAdd,Value,2.0,0.0,
-,,001793a0,Add,DamageTypeValues,Energy,0.0,"Weapons\MeleeMods\Melee_Mod_Shock_High.json
-{'curve': [{'x': 1, 'y': 5}, {'x': 50, 'y': 20}, {'x': 100, 'y': 20}]}"
+,,001793a0,MullAdd,DamageTypeValues,Energy,0.6,
 0045584d,mod_melee_SheepSquatchStaff_Shock,0045584d
 ,,001793a0,MullAdd,Weight,0.1,0.0,
+,,001793a0,MullAdd,AttackDamage,-0.4,0.0,
 ,,001793a0,MullAdd,Value,2.0,0.0,
-,,001793a0,Add,DamageTypeValues,Energy,0.0,"Weapons\MeleeMods\Melee_Mod_Shock_High.json
-{'curve': [{'x': 1, 'y': 5}, {'x': 50, 'y': 20}, {'x': 100, 'y': 20}]}"
+,,001793a0,MullAdd,DamageTypeValues,Energy,0.6,
 0045584b,mod_melee_SheepSquatchStaff_Heavy,0045584b
 ,,00054667,MullAdd,Weight,0.2,0.0,
 ,,00054667,MullAdd,Value,0.3,0.0,
@@ -2074,9 +2130,9 @@ ID,Name,ID,AppType,Property,Val1,Val2,Curve
 {'curve': [{'x': 1, 'y': 0.15}, {'x': 50, 'y': 0.15}]}"
 00455844,mod_melee_SheepSquatchClub_Shock,00455844
 ,,001793a0,MullAdd,Weight,0.1,0.0,
+,,001793a0,MullAdd,AttackDamage,-0.4,0.0,
 ,,001793a0,MullAdd,Value,2.0,0.0,
-,,001793a0,Add,DamageTypeValues,Energy,0.0,"Weapons\MeleeMods\Melee_Mod_Shock_High.json
-{'curve': [{'x': 1, 'y': 5}, {'x': 50, 'y': 20}, {'x': 100, 'y': 20}]}"
+,,001793a0,MullAdd,DamageTypeValues,Energy,0.6,
 00455842,mod_melee_SheepSquatchClub_BurningBarbwire,00455842
 ,,000b974a,MullAdd,Weight,0.1,0.0,
 ,,000b974a,MullAdd,Value,0.4,0.0,
@@ -2711,15 +2767,6 @@ ID,Name,ID,AppType,Property,Val1,Val2,Curve
 00439a47,zzzPOST_mod_AlienBlaster_Grip_Standard_Babylon,00439a47
 ,,00439a47,MullAdd,Weight,0.025,0.0,
 ,,00439a47,MullAdd,Value,0.025,0.0,
-00439a4a,zzzPOST_mod_AlienBlaster_Scope_SightsIron_Babylon,00439a4a
-,,00439a4a,MullAdd,ConeIncrease,1.0,0.0,
-,,00439a4a,MullAdd,MaxConDegree,-0.5,0.0,
-,,00439a4a,MullAdd,MinConDegree,-1.0,0.0,
-,,00439a4a,MullAdd,RecoilMaxDegree,0.5,0.0,
-,,00439a4a,MullAdd,RecoilMinDegree,-0.3,0.0,
-,,00439a4a,MullAdd,Value,0.025,0.0,
-,,00439a4a,Add,Weight,2.6,0.0,
-,,00439a4a,Add,DamageTypeValues,Energy,35.0,
 004392cd,zzz_mod_Legendary_Weapon1_Guns_AmmoCapacity2x,004392cd
 ,,004519f4,MullAdd,Value,1.0,0.0,
 ,,004392cd,MullAdd,AmmoCapacity,1.0,0.0,
@@ -2812,9 +2859,9 @@ ID,Name,ID,AppType,Property,Val1,Val2,Curve
 ,,00054667,Add,Durability,-5,0,
 00054691,_PARENT_mod_melee_weapon_Shock_Low,00054691
 ,,00054691,MullAdd,Weight,0.05,0.0,
+,,00054691,MullAdd,AttackDamage,-0.4,0.0,
 ,,00054691,MullAdd,Value,1.0,0.0,
-,,00054691,Add,DamageTypeValues,Energy,5.0,"Weapons\MeleeMods\Melee_Mod_Shock_Low.json
-{'curve': [{'x': 1, 'y': 2}, {'x': 2, 'y': 2}, {'x': 3, 'y': 2}, {'x': 4, 'y': 2}, {'x': 5, 'y': 2}, {'x': 6, 'y': 2}, {'x': 7, 'y': 2}, {'x': 8, 'y': 2}, {'x': 9, 'y': 2}, {'x': 10, 'y': 3}, {'x': 11, 'y': 3}, {'x': 12, 'y': 3}, {'x': 13, 'y': 3}, {'x': 14, 'y': 3}, {'x': 15, 'y': 3}, {'x': 16, 'y': 3}, {'x': 17, 'y': 3}, {'x': 18, 'y': 3}, {'x': 19, 'y': 3}, {'x': 20, 'y': 4}, {'x': 21, 'y': 4}, {'x': 22, 'y': 4}, {'x': 23, 'y': 4}, {'x': 24, 'y': 4}, {'x': 25, 'y': 4}, {'x': 26, 'y': 4}, {'x': 27, 'y': 4}, {'x': 28, 'y': 4}, {'x': 29, 'y': 4}, {'x': 30, 'y': 5}, {'x': 31, 'y': 5}, {'x': 32, 'y': 5}, {'x': 33, 'y': 5}, {'x': 34, 'y': 5}, {'x': 35, 'y': 5}, {'x': 36, 'y': 5}, {'x': 37, 'y': 5}, {'x': 38, 'y': 5}, {'x': 39, 'y': 5}, {'x': 40, 'y': 6}, {'x': 41, 'y': 6}, {'x': 42, 'y': 6}, {'x': 43, 'y': 6}, {'x': 44, 'y': 6}, {'x': 45, 'y': 7}, {'x': 46, 'y': 7}, {'x': 47, 'y': 7}, {'x': 48, 'y': 7}, {'x': 49, 'y': 7}, {'x': 50, 'y': 8}]}"
+,,00054691,MullAdd,DamageTypeValues,Energy,0.6,
 001a7b80,zzz_mod_Legendary_Weapon4_Melee_BlockFreeze,001a7b80
 ,,004519f7,MullAdd,Value,4.0,0.0,
 ,,001a7b80,Add,MaxRange,-0.0,0.0,
@@ -3940,15 +3987,27 @@ ID,Name,ID,AppType,Property,Val1,Val2,Curve
 ,,0004deff,MullAdd,APCost,0.25,0.0,
 ,,0004deff,MullAdd,Weight,0.025,0.0,
 ,,0004deff,MullAdd,Value,0.025,0.0,
-,,0004deff,Add,DamageBonusMult,1.0,0.0,
+,,0004deff,Add,DamageBonusMult,0.5,0.0,
 ,,005918f6,MullAdd,Weight,0.05,0.0,
+,,005918f6,MullAdd,AttackDamage,-0.4,0.0,
 ,,005918f6,MullAdd,Value,1.0,0.0,
+,,005918f6,MullAdd,DamageTypeValues,Fire,0.6,
 ,,0004df00,Set,SecondaryDamage,0.0,0.0,"Weapons\Melee\Weap_ChainsawDMG.json
 {'curve': [{'x': 1, 'y': 0}, {'x': 5, 'y': 0}, {'x': 10, 'y': 0}, {'x': 15, 'y': 0}, {'x': 20, 'y': 10}, {'x': 25, 'y': 12}, {'x': 30, 'y': 12}, {'x': 35, 'y': 14}, {'x': 40, 'y': 14}, {'x': 45, 'y': 16}, {'x': 50, 'y': 16}]}"
 ,,0004df00,MullAdd,Weight,0.025,0.0,
-,,0004df00,MullAdd,AttackDamage,0.2,0.0,
 ,,0004df00,MullAdd,Value,0.025,0.0,
-,,0004df00,Add,DamageTypeValues,Fire,10.0,
+0036c4af,mod_SingleActionRevolver_Barrel_Fancy,0036c4af
+,,00242f2e,MullAdd,MaxRange,1.0,0.0,"Weapons\WeaponMods\Weapon_PARENT_Mod_VeryLongRange_MaxRange.json
+{'curve': [{'x': 1, 'y': 18}, {'x': 100, 'y': 18}]}"
+,,00242f2e,MullAdd,MinRange,1.0,0.0,"Weapons\WeaponMods\Weapon_PARENT_Mod_VeryLongRange_MinRange.json
+{'curve': [{'x': 1, 'y': 11}, {'x': 100, 'y': 11}]}"
+,,00242f2e,MullAdd,Weight,0.15,0.0,
+,,00242f2e,MullAdd,Value,0.4,0.0,
+,,00242f2e,Add,Durability,-10,0,
+,,00524418,MullAdd,RecoilMaxDegree,-0.1,0.0,
+,,00524418,MullAdd,RecoilMinDegree,-0.1,0.0,
+,,0036c4af,MullAdd,Weight,0.5,0.0,
+,,0036c4af,MullAdd,Value,0.2,0.0,
 0036c4b0,mod_SingleActionRevolver_Grip_Fancy,0036c4b0
 ,,00524415,MullAdd,RecoilMaxDegree,-0.125,0.0,
 ,,00524415,MullAdd,RecoilMinDegree,-0.125,0.0,
@@ -3998,6 +4057,12 @@ ID,Name,ID,AppType,Property,Val1,Val2,Curve
 ,,0043b769,MullAdd,Value,0.2,0.0,
 ,,0036c4b5,MullAdd,Weight,0.4,0.0,
 ,,0036c4b5,MullAdd,Value,0.4,0.0,
+0036c4b2,mod_SingleActionRevolver_Receiver_Fancy,0036c4b2
+,,0036c4b2,MullAdd,APCost,-0.1,0.0,
+,,0036c4b2,MullAdd,ReloadSpeed,0.3,0.0,
+,,0036c4b2,MullAdd,Speed,0.3,0.0,
+,,0036c4b2,MullAdd,Weight,0.025,0.0,
+,,0036c4b2,MullAdd,Value,0.025,0.0,
 00355dc2,mod_10mmSMG_Barrel_Short_Base,00355dc2
 ,,0027abfd,MullAdd,ConIronSights,-0.2,0.0,
 ,,0027abfd,MullAdd,MaxRange,1.0,0.0,"Weapons\WeaponMods\Weapon_PARENT_Mod_ShortRange_MaxRange.json
@@ -4288,6 +4353,11 @@ ID,Name,ID,AppType,Property,Val1,Val2,Curve
 0031b1e4,DLC04_mod_HandMadeGun_SCOPE_ironsights_Glow,0031b1e4
 ,,006dd8c8,MullAdd,Weight,0.025,0.0,
 ,,006dd8c8,MullAdd,Value,0.1,0.0,
+,,005249e4,MullAdd,ConIronSights,-0.1,0.0,
+,,005249e4,MullAdd,APCost,-0.075,0.0,
+,,005249e4,MullAdd,SightedTransition,-0.05,0.0,
+,,005249e4,MullAdd,Weight,0.013,0.0,
+,,005249e4,MullAdd,Value,0.1,0.0,
 0031b193,DLC04_mod_HandMadeGun_Barrel_Short_Base,0031b193
 ,,0027abfd,MullAdd,ConIronSights,-0.2,0.0,
 ,,0027abfd,MullAdd,MaxRange,1.0,0.0,"Weapons\WeaponMods\Weapon_PARENT_Mod_ShortRange_MaxRange.json
@@ -7620,6 +7690,12 @@ ID,Name,ID,AppType,Property,Val1,Val2,Curve
 ,,0043c166,MullAdd,Value,0.4,0.0,
 ,,0043c166,Add,Durability,-2,0,
 00312b0c,mod_GatlingLaser_SCOPE_reflex_Base,00312b0c
+,,005249e7,Set,ZoomFOVMult,1.5,0.0,
+,,005249e7,MullAdd,ConIronSights,-0.15,0.0,
+,,005249e7,MullAdd,APCost,-0.15,0.0,
+,,005249e7,MullAdd,SightedTransition,-0.1,0.0,
+,,005249e7,MullAdd,Weight,0.05,0.0,
+,,005249e7,MullAdd,Value,0.25,0.0,
 ,,00312b0c,Set,ZoomFOVMult,1.5,0.0,
 ,,00312b0c,MullAdd,Weight,0.1,0.0,
 ,,00312b0c,MullAdd,Value,0.25,0.0,
@@ -10168,9 +10244,9 @@ ID,Name,ID,AppType,Property,Val1,Val2,Curve
 {'curve': [{'x': 1, 'y': 2}, {'x': 2, 'y': 2}, {'x': 3, 'y': 2}, {'x': 4, 'y': 2}, {'x': 5, 'y': 2}, {'x': 6, 'y': 2}, {'x': 7, 'y': 2}, {'x': 8, 'y': 2}, {'x': 9, 'y': 2}, {'x': 10, 'y': 3}, {'x': 11, 'y': 3}, {'x': 12, 'y': 3}, {'x': 13, 'y': 3}, {'x': 14, 'y': 3}, {'x': 15, 'y': 3}, {'x': 16, 'y': 3}, {'x': 17, 'y': 3}, {'x': 18, 'y': 3}, {'x': 19, 'y': 3}, {'x': 20, 'y': 4}, {'x': 21, 'y': 4}, {'x': 22, 'y': 4}, {'x': 23, 'y': 4}, {'x': 24, 'y': 4}, {'x': 25, 'y': 4}, {'x': 26, 'y': 4}, {'x': 27, 'y': 4}, {'x': 28, 'y': 4}, {'x': 29, 'y': 4}, {'x': 30, 'y': 5}, {'x': 31, 'y': 5}, {'x': 32, 'y': 5}, {'x': 33, 'y': 5}, {'x': 34, 'y': 5}, {'x': 35, 'y': 5}, {'x': 36, 'y': 5}, {'x': 37, 'y': 5}, {'x': 38, 'y': 5}, {'x': 39, 'y': 5}, {'x': 40, 'y': 6}, {'x': 41, 'y': 6}, {'x': 42, 'y': 6}, {'x': 43, 'y': 6}, {'x': 44, 'y': 6}, {'x': 45, 'y': 7}, {'x': 46, 'y': 7}, {'x': 47, 'y': 7}, {'x': 48, 'y': 7}, {'x': 49, 'y': 7}, {'x': 50, 'y': 8}]}"
 001793a0,_PARENT_mod_melee_weapon_Shock_High,001793a0
 ,,001793a0,MullAdd,Weight,0.1,0.0,
+,,001793a0,MullAdd,AttackDamage,-0.4,0.0,
 ,,001793a0,MullAdd,Value,2.0,0.0,
-,,001793a0,Add,DamageTypeValues,Energy,0.0,"Weapons\MeleeMods\Melee_Mod_Shock_High.json
-{'curve': [{'x': 1, 'y': 5}, {'x': 50, 'y': 20}, {'x': 100, 'y': 20}]}"
+,,001793a0,MullAdd,DamageTypeValues,Energy,0.6,
 002e5b32,mod_44_Receiver_HipAccuracy,002e5b32
 ,,00524414,MullAdd,ConIronSights,-0.1,0.0,
 ,,00524414,MullAdd,MaxConDegree,-0.25,0.0,
@@ -10477,12 +10553,22 @@ ID,Name,ID,AppType,Property,Val1,Val2,Curve
 00242f39,mod_CombatRifle_SCOPE_Ironsights_Glow_Base,00242f39
 ,,006dd8c8,MullAdd,Weight,0.025,0.0,
 ,,006dd8c8,MullAdd,Value,0.1,0.0,
+,,005249e4,MullAdd,ConIronSights,-0.1,0.0,
+,,005249e4,MullAdd,APCost,-0.075,0.0,
+,,005249e4,MullAdd,SightedTransition,-0.05,0.0,
+,,005249e4,MullAdd,Weight,0.013,0.0,
+,,005249e4,MullAdd,Value,0.1,0.0,
 00242f3a,mod_CombatRifle_SCOPE_Ironsights_Circle_Base,00242f3a
 ,,00242f3a,MullAdd,Weight,0.025,0.0,
 ,,00242f3a,MullAdd,Value,0.05,0.0,
 00242f93,mod_CombatRifle_SCOPE_Ironsights_CircleGlow_Base,00242f93
 ,,006dd8c8,MullAdd,Weight,0.025,0.0,
 ,,006dd8c8,MullAdd,Value,0.1,0.0,
+,,005249e4,MullAdd,ConIronSights,-0.1,0.0,
+,,005249e4,MullAdd,APCost,-0.075,0.0,
+,,005249e4,MullAdd,SightedTransition,-0.05,0.0,
+,,005249e4,MullAdd,Weight,0.013,0.0,
+,,005249e4,MullAdd,Value,0.1,0.0,
 00242f94,mod_CombatRifle_SCOPE_Reflex_Base,00242f94
 ,,005249e6,Set,ZoomFOVMult,1.5,0.0,
 ,,005249e6,MullAdd,ConIronSights,-0.15,0.0,
@@ -13379,12 +13465,29 @@ ID,Name,ID,AppType,Property,Val1,Val2,Curve
 002accbf,mod_DoubleBarrelShotgun_SCOPE_glow_Base,002accbf
 ,,006dd8c8,MullAdd,Weight,0.025,0.0,
 ,,006dd8c8,MullAdd,Value,0.1,0.0,
+,,005249e4,MullAdd,ConIronSights,-0.1,0.0,
+,,005249e4,MullAdd,APCost,-0.075,0.0,
+,,005249e4,MullAdd,SightedTransition,-0.05,0.0,
+,,005249e4,MullAdd,Weight,0.013,0.0,
+,,005249e4,MullAdd,Value,0.1,0.0,
 002d5d12,mod_DoubleBarrelShotgun_SCOPE_reflex_Base,002d5d12
+,,005249e6,Set,ZoomFOVMult,1.5,0.0,
+,,005249e6,MullAdd,ConIronSights,-0.15,0.0,
+,,005249e6,MullAdd,APCost,-0.15,0.0,
+,,005249e6,MullAdd,SightedTransition,-0.1,0.0,
+,,005249e6,MullAdd,Weight,0.05,0.0,
+,,005249e6,MullAdd,Value,0.25,0.0,
 ,,002d5d12,Set,ZoomFOVMult,1.5,0.0,
 ,,002d5d12,MullAdd,Weight,0.1,0.0,
 ,,002d5d12,MullAdd,Value,0.25,0.0,
 ,,002d5d12,Add,ZoomDataCameraOffsetZ,0.5,0.0,
 002d5d19,mod_DoubleBarrelShotgun_SCOPE_reflexcircle_Base,002d5d19
+,,004512cd,Set,ZoomFOVMult,1.5,0.0,
+,,004512cd,MullAdd,ConIronSights,-0.15,0.0,
+,,004512cd,MullAdd,APCost,-0.15,0.0,
+,,004512cd,MullAdd,SightedTransition,-0.1,0.0,
+,,004512cd,MullAdd,Weight,0.05,0.0,
+,,004512cd,MullAdd,Value,0.25,0.0,
 ,,002d5d19,Set,ZoomFOVMult,1.5,0.0,
 ,,002d5d19,MullAdd,Weight,0.1,0.0,
 ,,002d5d19,MullAdd,Value,0.25,0.0,
@@ -13823,12 +13926,22 @@ ID,Name,ID,AppType,Property,Val1,Val2,Curve
 00204a33,mod_CombatShotgun_SCOPE_ironsights_Glow_Base,00204a33
 ,,006dd8c8,MullAdd,Weight,0.025,0.0,
 ,,006dd8c8,MullAdd,Value,0.1,0.0,
+,,005249e4,MullAdd,ConIronSights,-0.1,0.0,
+,,005249e4,MullAdd,APCost,-0.075,0.0,
+,,005249e4,MullAdd,SightedTransition,-0.05,0.0,
+,,005249e4,MullAdd,Weight,0.013,0.0,
+,,005249e4,MullAdd,Value,0.1,0.0,
 002078ee,mod_CombatShotgun_SCOPE_ironsights_ring_Base,002078ee
 ,,002078ee,MullAdd,Weight,0.025,0.0,
 ,,002078ee,MullAdd,Value,0.05,0.0,
 00204a3a,mod_CombatShotgun_SCOPE_ironsights_GlowRing_Base,00204a3a
 ,,006dd8c8,MullAdd,Weight,0.025,0.0,
 ,,006dd8c8,MullAdd,Value,0.1,0.0,
+,,005249e4,MullAdd,ConIronSights,-0.1,0.0,
+,,005249e4,MullAdd,APCost,-0.075,0.0,
+,,005249e4,MullAdd,SightedTransition,-0.05,0.0,
+,,005249e4,MullAdd,Weight,0.013,0.0,
+,,005249e4,MullAdd,Value,0.1,0.0,
 0023d4e7,mod_CombatShotgun_SCOPE_reflex_Base,0023d4e7
 ,,005249e6,Set,ZoomFOVMult,1.5,0.0,
 ,,005249e6,MullAdd,ConIronSights,-0.15,0.0,
@@ -15604,9 +15717,9 @@ ID,Name,ID,AppType,Property,Val1,Val2,Curve
 ,,00524419,Add,Durability,-2,0,
 0010d807,mod_melee_Hatchet_ElectroFusion,0010d807
 ,,001793a0,MullAdd,Weight,0.1,0.0,
+,,001793a0,MullAdd,AttackDamage,-0.4,0.0,
 ,,001793a0,MullAdd,Value,2.0,0.0,
-,,001793a0,Add,DamageTypeValues,Energy,0.0,"Weapons\MeleeMods\Melee_Mod_Shock_High.json
-{'curve': [{'x': 1, 'y': 5}, {'x': 50, 'y': 20}, {'x': 100, 'y': 20}]}"
+,,001793a0,MullAdd,DamageTypeValues,Energy,0.6,
 0001ec63,mod_GatlingPlasma_Magazine_Standard,0001ec63
 ,,0001ec63,MullAdd,APCost,0.05,0.0,
 ,,0001ec63,MullAdd,ReloadSpeed,0.05,0.0,
@@ -15689,19 +15802,19 @@ ID,Name,ID,AppType,Property,Val1,Val2,Curve
 ,,00002042,MullAdd,BaseStability,-0.2,0.0,
 0004df00,mod_Chainsaw_Flamer,0004df00
 ,,005918f6,MullAdd,Weight,0.05,0.0,
+,,005918f6,MullAdd,AttackDamage,-0.4,0.0,
 ,,005918f6,MullAdd,Value,1.0,0.0,
+,,005918f6,MullAdd,DamageTypeValues,Fire,0.6,
 ,,0004df00,Set,SecondaryDamage,0.0,0.0,"Weapons\Melee\Weap_ChainsawDMG.json
 {'curve': [{'x': 1, 'y': 0}, {'x': 5, 'y': 0}, {'x': 10, 'y': 0}, {'x': 15, 'y': 0}, {'x': 20, 'y': 10}, {'x': 25, 'y': 12}, {'x': 30, 'y': 12}, {'x': 35, 'y': 14}, {'x': 40, 'y': 14}, {'x': 45, 'y': 16}, {'x': 50, 'y': 16}]}"
 ,,0004df00,MullAdd,Weight,0.025,0.0,
-,,0004df00,MullAdd,AttackDamage,0.2,0.0,
 ,,0004df00,MullAdd,Value,0.025,0.0,
-,,0004df00,Add,DamageTypeValues,Fire,10.0,
 0004deff,mod_Chainsaw_Bar_Dual,0004deff
 ,,003d4e66,Add,Durability,-3,0,
 ,,0004deff,MullAdd,APCost,0.25,0.0,
 ,,0004deff,MullAdd,Weight,0.025,0.0,
 ,,0004deff,MullAdd,Value,0.025,0.0,
-,,0004deff,Add,DamageBonusMult,1.0,0.0,
+,,0004deff,Add,DamageBonusMult,0.5,0.0,
 0004defe,mod_Chainsaw_Bar_Bow_Long,0004defe
 ,,003d4e67,Add,Durability,-5,0,
 ,,0004defe,Set,SecondaryDamage,0.0,0.0,"Weapons\Melee\Weap_ChainsawDMG.json
@@ -16045,9 +16158,9 @@ ID,Name,ID,AppType,Property,Val1,Val2,Curve
 ,,0010f630,Add,DamageTypeValues,Energy,-15.0,
 0010f3f3,dlc01_mod_melee_assaultronblade_Shock,0010f3f3
 ,,001793a0,MullAdd,Weight,0.1,0.0,
+,,001793a0,MullAdd,AttackDamage,-0.4,0.0,
 ,,001793a0,MullAdd,Value,2.0,0.0,
-,,001793a0,Add,DamageTypeValues,Energy,0.0,"Weapons\MeleeMods\Melee_Mod_Shock_High.json
-{'curve': [{'x': 1, 'y': 5}, {'x': 50, 'y': 20}, {'x': 100, 'y': 20}]}"
+,,001793a0,MullAdd,DamageTypeValues,Energy,0.6,
 0010f279,DLC01_mod_LightningGun_Scope_SightsReflex,0010f279
 ,,005249e6,Set,ZoomFOVMult,1.5,0.0,
 ,,005249e6,MullAdd,ConIronSights,-0.15,0.0,
@@ -16060,9 +16173,9 @@ ID,Name,ID,AppType,Property,Val1,Val2,Curve
 ,,0010f185,Add,ZoomDataCameraOffsetZ,-1.25,0.0,
 0010ec98,DLC01_mod_melee_MrHandyBuzzBlade_Shock,0010ec98
 ,,005918f8,MullAdd,Weight,0.05,0.0,
+,,005918f8,MullAdd,AttackDamage,-0.4,0.0,
 ,,005918f8,MullAdd,Value,1.0,0.0,
-,,005918f8,Add,DamageTypeValues,Electrical,0.0,"Weapons\MeleeMods\Melee_Mod_Shock_Auto.json
-{'curve': [{'x': 1, 'y': 5}, {'x': 50, 'y': 5}, {'x': 100, 'y': 5}]}"
+,,005918f8,MullAdd,DamageTypeValues,Energy,0.6,
 0010eaaf,DLC01_mod_LightningGun_Barrel_Lobber,0010eaaf
 ,,0027abfe,MullAdd,ConIronSights,-0.1,0.0,
 ,,0027abfe,MullAdd,MaxRange,1.0,0.0,"Weapons\WeaponMods\Weapon_PARENT_Mod_VeryShortRange_MaxRange.json
@@ -16612,9 +16725,9 @@ ID,Name,ID,AppType,Property,Val1,Val2,Curve
 ,,0014ec5a,MullAdd,DamageTypeValues,Energy,1.0,
 0014a0f1,mod_melee_ChineseOfficerSword_ShockAndSerrated,0014a0f1
 ,,00054691,MullAdd,Weight,0.05,0.0,
+,,00054691,MullAdd,AttackDamage,-0.4,0.0,
 ,,00054691,MullAdd,Value,1.0,0.0,
-,,00054691,Add,DamageTypeValues,Energy,5.0,"Weapons\MeleeMods\Melee_Mod_Shock_Low.json
-{'curve': [{'x': 1, 'y': 2}, {'x': 2, 'y': 2}, {'x': 3, 'y': 2}, {'x': 4, 'y': 2}, {'x': 5, 'y': 2}, {'x': 6, 'y': 2}, {'x': 7, 'y': 2}, {'x': 8, 'y': 2}, {'x': 9, 'y': 2}, {'x': 10, 'y': 3}, {'x': 11, 'y': 3}, {'x': 12, 'y': 3}, {'x': 13, 'y': 3}, {'x': 14, 'y': 3}, {'x': 15, 'y': 3}, {'x': 16, 'y': 3}, {'x': 17, 'y': 3}, {'x': 18, 'y': 3}, {'x': 19, 'y': 3}, {'x': 20, 'y': 4}, {'x': 21, 'y': 4}, {'x': 22, 'y': 4}, {'x': 23, 'y': 4}, {'x': 24, 'y': 4}, {'x': 25, 'y': 4}, {'x': 26, 'y': 4}, {'x': 27, 'y': 4}, {'x': 28, 'y': 4}, {'x': 29, 'y': 4}, {'x': 30, 'y': 5}, {'x': 31, 'y': 5}, {'x': 32, 'y': 5}, {'x': 33, 'y': 5}, {'x': 34, 'y': 5}, {'x': 35, 'y': 5}, {'x': 36, 'y': 5}, {'x': 37, 'y': 5}, {'x': 38, 'y': 5}, {'x': 39, 'y': 5}, {'x': 40, 'y': 6}, {'x': 41, 'y': 6}, {'x': 42, 'y': 6}, {'x': 43, 'y': 6}, {'x': 44, 'y': 6}, {'x': 45, 'y': 7}, {'x': 46, 'y': 7}, {'x': 47, 'y': 7}, {'x': 48, 'y': 7}, {'x': 49, 'y': 7}, {'x': 50, 'y': 8}]}"
+,,00054691,MullAdd,DamageTypeValues,Energy,0.6,
 ,,000b974a,MullAdd,Weight,0.1,0.0,
 ,,000b974a,MullAdd,Value,0.4,0.0,
 ,,000b974a,Add,DamageBonusMult,0.0,0.0,"Weapons\MeleeMods\Melee_Mod_Blades.json
@@ -16632,9 +16745,9 @@ ID,Name,ID,AppType,Property,Val1,Val2,Curve
 ,,0013b023,Add,DamageTypeValues,Energy,15.0,
 0013b01f,mod_melee_RevolutionarySword_Shock,0013b01f
 ,,001793a0,MullAdd,Weight,0.1,0.0,
+,,001793a0,MullAdd,AttackDamage,-0.4,0.0,
 ,,001793a0,MullAdd,Value,2.0,0.0,
-,,001793a0,Add,DamageTypeValues,Energy,0.0,"Weapons\MeleeMods\Melee_Mod_Shock_High.json
-{'curve': [{'x': 1, 'y': 5}, {'x': 50, 'y': 20}, {'x': 100, 'y': 20}]}"
+,,001793a0,MullAdd,DamageTypeValues,Energy,0.6,
 0013a30f,_PARENT_mod_melee_weapon_Heated,0013a30f
 ,,0013a30f,Add,DamageTypeValues,Fire,0.0,"Weapons\MeleeMods\Melee_Mod_Heated.json
 {'curve': [{'x': 1, 'y': 2}, {'x': 50, 'y': 10}]}"
@@ -16759,9 +16872,9 @@ ID,Name,ID,AppType,Property,Val1,Val2,Curve
 {'curve': [{'x': 1, 'y': 0.1}, {'x': 50, 'y': 0.1}]}"
 0019ccec,mod_melee_ChineseOfficerSword_Shock,0019ccec
 ,,001793a0,MullAdd,Weight,0.1,0.0,
+,,001793a0,MullAdd,AttackDamage,-0.4,0.0,
 ,,001793a0,MullAdd,Value,2.0,0.0,
-,,001793a0,Add,DamageTypeValues,Energy,0.0,"Weapons\MeleeMods\Melee_Mod_Shock_High.json
-{'curve': [{'x': 1, 'y': 5}, {'x': 50, 'y': 20}, {'x': 100, 'y': 20}]}"
+,,001793a0,MullAdd,DamageTypeValues,Energy,0.6,
 00188c91,mod_MissileLauncher_Scope_TargetingBox,00188c91
 ,,003d4e68,Add,Durability,-10,0,
 ,,00188c91,MullAdd,APCost,0.15,0.0,
@@ -17139,9 +17252,9 @@ ID,Name,ID,AppType,Property,Val1,Val2,Curve
 {'curve': [{'x': 1, 'y': 0.15}, {'x': 50, 'y': 0.15}]}"
 0017bbc5,mod_melee_Baton_Shock,0017bbc5
 ,,001793a0,MullAdd,Weight,0.1,0.0,
+,,001793a0,MullAdd,AttackDamage,-0.4,0.0,
 ,,001793a0,MullAdd,Value,2.0,0.0,
-,,001793a0,Add,DamageTypeValues,Energy,0.0,"Weapons\MeleeMods\Melee_Mod_Shock_High.json
-{'curve': [{'x': 1, 'y': 5}, {'x': 50, 'y': 20}, {'x': 100, 'y': 20}]}"
+,,001793a0,MullAdd,DamageTypeValues,Energy,0.6,
 00179b06,mod_melee_DeathclawGauntlet_Hook,00179b06
 ,,0017913c,MullAdd,Weight,0.3,0.0,
 ,,0017913c,MullAdd,Value,0.6,0.0,
@@ -17637,7 +17750,7 @@ ID,Name,ID,AppType,Property,Val1,Val2,Curve
 ,,003d4e66,Add,Durability,-3,0,
 ,,0011b45f,MullAdd,MaxRange,-1.5,0.0,
 ,,0011b45f,MullAdd,MinRange,-0.75,0.0,
-,,0011b45f,MullAdd,SecondaryDamage,1.0,0.0,
+,,0011b45f,MullAdd,SecondaryDamage,0.5,0.0,
 ,,0011b45f,MullAdd,Weight,0.25,0.0,
 ,,0011b45f,MullAdd,Value,0.2,0.0,
 0010771e,mod_RailwayRifle_Barrel_Short,0010771e
@@ -17836,9 +17949,9 @@ ID,Name,ID,AppType,Property,Val1,Val2,Curve
 ,,004036f3,Add,Weight,-18.0,0.0,
 005a7be7,mod_melee_CattleProd_Shock_Babylon,005a7be7
 ,,001793a0,MullAdd,Weight,0.1,0.0,
+,,001793a0,MullAdd,AttackDamage,-0.4,0.0,
 ,,001793a0,MullAdd,Value,2.0,0.0,
-,,001793a0,Add,DamageTypeValues,Energy,0.0,"Weapons\MeleeMods\Melee_Mod_Shock_High.json
-{'curve': [{'x': 1, 'y': 5}, {'x': 50, 'y': 20}, {'x': 100, 'y': 20}]}"
+,,001793a0,MullAdd,DamageTypeValues,Energy,0.6,
 ,,005a7be7,Add,AttackDamage,10,0,
 ,,005a7be7,Add,DamageTypeValues,Energy,10.0,"Weapons\MeleeMods\Melee_Mod_Shock_High.json
 {'curve': [{'x': 1, 'y': 5}, {'x': 50, 'y': 20}, {'x': 100, 'y': 20}]}"
