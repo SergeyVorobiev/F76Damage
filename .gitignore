@@ -1,7 +1,10 @@
 # User rules
 Resources/Creds/f76credentials.json
 Resources/Extracted/*
+Code/WeaponImagesGenerator/*
+Resources/Local/*
 !Resources/Extracted/misc
+Code/Local/*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

@@ -90,8 +90,12 @@ def update_creature_resistance(spreadsheet, config):
 def update_weapon_mods(spreadsheet, config):
     print("Update weapon mods")
     weapon_mods_sheet = prepare_sheet(spreadsheet, config, "WeaponModSheet")
-    table = prepare_weapon_mods_table(config)
-    weapon_mods_sheet.update(table)
+    weapon_perks_sheet = prepare_sheet(spreadsheet, config, "PerkSheet")
+    weapon_spells_sheet = prepare_sheet(spreadsheet, config, "SpellSheet")
+    mods, perks, spells = prepare_weapon_mods_table(config)
+    weapon_mods_sheet.update(mods)
+    weapon_perks_sheet.update(perks)
+    weapon_spells_sheet.update(spells)
     print("\nSuccess\n")
 
 
@@ -124,11 +128,17 @@ def get_spreadsheet_and_config():
 
 def update_weapons(spreadsheet, config):
     print("Update weapons")
-    m_weapon_sheet = prepare_sheet(spreadsheet, config, "MeleeWeaponSheet")
+    weapon_sheet = prepare_sheet(spreadsheet, config, "WeaponSheet")
     r_weapon_sheet = prepare_sheet(spreadsheet, config, "RangeWeaponSheet")
-    _, melee_table, range_table = parse_weapon_data(config)
-    m_weapon_sheet.update(melee_table)
+    m_weapon_sheet = prepare_sheet(spreadsheet, config, "MeleeWeaponSheet")
+    t_weapon_sheet = prepare_sheet(spreadsheet, config, "ThrownWeaponSheet")
+    u_weapon_sheet = prepare_sheet(spreadsheet, config, "UnarmedWeaponSheet")
+    table, range_table, melee_table, thrown_table, unarmed_table = parse_weapon_data(config)
+    weapon_sheet.update(table)
     r_weapon_sheet.update(range_table)
+    m_weapon_sheet.update(melee_table)
+    t_weapon_sheet.update(thrown_table)
+    u_weapon_sheet.update(unarmed_table)
     print("\nSuccess\n")
 
 

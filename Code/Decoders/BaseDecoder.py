@@ -17,9 +17,5 @@ class BaseDecoder(AbstractDecoder):
     def before_start(self):
         pass
 
-    def on_finish(self):
-        pass
-        #  print(f"\nFound {self.__count} items")
-
     def decoded(self, unit: bytes, result: {}):
         self.__count += 1

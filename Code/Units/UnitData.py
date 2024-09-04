@@ -45,5 +45,9 @@ class UnitData:
 
     def unit_size(self, part) -> int:
         if self.__size_func is not None:
-            return self.__size_func(part)
+            size = self.__size_func(part)
+            if size <= 0:
+                print(f"Wrong size for part: {part}")
+            else:
+                return self.__size_func(part)
         return 0

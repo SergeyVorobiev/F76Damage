@@ -1,90 +1,117 @@
 import sys
 
 sys.path.append("..")
+
 import Root
+from Code.Grabbers.AlchemyGrabber import AlchemyGrabber
+from Code.Grabbers.HazardGrabber import HazardGrabber
+from Code.Grabbers.MSTTGrabber import MSTTGrabber
+from Code.Grabbers.GlobGrabber import GlobGrabber
+from Code.Grabbers.AVIFGrabber import AVIFGrabber
+from Code.Grabbers.AmmoGrabber import AmmoGrabber
+from Code.Grabbers.CurvGrabber import CurvGrabber
+from Code.Grabbers.DMGTGrabber import DMGTGrabber
+from Code.Grabbers.EnchGrabber import EnchGrabber
+from Code.Grabbers.ExplosionGrabber import ExplosionGrabber
+from Code.Grabbers.KeywordGrabber import KeywordGrabber
+from Code.Grabbers.MGEFGrabber import MGEFGrabber
+from Code.Grabbers.ModGrabber import ModGrabber
+from Code.Grabbers.PerkGrabber import PerkGrabber
+from Code.Grabbers.ProjectileGrabber import ProjectileGrabber
+from Code.Grabbers.SpelGrabber import SpelGrabber
 from CMD.Config import Config
 from Code.Decoders.BaseDecoder import BaseDecoder
 from Code.Decoders.Templates.F76DTemplates import F76DecTemplates
 from Code.Helpers.CSV import CSV
-from Code.Helpers.F76AInst import F76AInst
-from Code.Mods.Mod import Mod
-from Code.Mods.ModHelper import ModHelper
 from Code.Units.UnitSeparator import UnitSeparator
-
-mods = {}
-curv = {}
-dmgt = {}
-mc = 0
-cc = 0
-
-
-def mod_listener(unit: bytes):
-    global mc
-    mc += 1
-    idd = F76AInst.get_id(unit)
-    name = F76AInst.get_name(unit)
-
-    print("".ljust(100), end='\r')
-    print(mc, idd, name, end='\r')
-    props = ModHelper.get_weap_properties(unit)
-    if props is not None:
-        mod = Mod(idd, name, props)
-        global mods
-        mods[idd] = mod
-
-
-def curv_listener(unit: bytes):
-    idd = F76AInst.get_id(unit)
-    index = unit.find(b'JASF')
-    if index < 0:
-        index = unit.find(b'CRVE')
-    global cc
-    cc += 1
-    if index > -1:
-        path_ = unit[index + 6:].partition(b'\x00')[0].decode('latin-1')
-        curv[idd] = path_
-    print("".ljust(100), end='\r')
-    print(cc, idd, end='\r')
-
-
-def dmgt_listener(unit: bytes):
-    idd = F76AInst.get_id(unit)
-    name = F76AInst.get_name(unit)[2:]
-    dmgt[idd] = name
 
 
 def prepare_weapon_mods_table(config):
+    curve_path = Root.build_path(Root.RESOURCES, config.get_string("Weapon.Mod", "CurveTablesPath"))
+    curv_grabber = CurvGrabber(curve_path)
+    glob_grabber = GlobGrabber()
+    avif_grabber = AVIFGrabber()
+    dmgt_grabber = DMGTGrabber()
+    kywd_grabber = KeywordGrabber()
+    expl_grabber = ExplosionGrabber(curv_grabber.curv, dmgt_grabber.dmgt)
+    proj_grabber = ProjectileGrabber(expl_grabber.expl)
+    ammo_grabber = AmmoGrabber(kywd_grabber.kywd, proj_grabber.proj)
+
+
+
+    # Contains not resolved perk ids
+    mgef_grabber = MGEFGrabber(avif_grabber.avif, kywd_grabber.kywd, proj_grabber.proj, expl_grabber.expl)
+    spel_grabber = SpelGrabber(mgef_grabber.mgef, curv_grabber.curv, avif_grabber.avif, glob_grabber.glob)
+    ench_grabber = EnchGrabber(mgef_grabber.mgef, curv_grabber.curv, avif_grabber.avif, glob_grabber.glob)
+
+    hazd_grabber = HazardGrabber(spel_grabber.spel, ench_grabber.ench)
+    alch_grabber = AlchemyGrabber()
+    mstt_grabber = MSTTGrabber(spel_grabber.spel, expl_grabber.expl, hazd_grabber.hazd)
+
+    perk_grabber = PerkGrabber(spel_grabber.spel, avif_grabber.avif)
+    mod_grabber = ModGrabber(curv_grabber.curv, dmgt_grabber.dmgt, avif_grabber.avif, ench_grabber.ench,
+                             kywd_grabber.kywd,
+                             ammo_grabber.ammo, proj_grabber.proj, spel_grabber.spel)
+
     decoders = [
-        BaseDecoder(F76DecTemplates.CURVE).listen(curv_listener, listen_only=True),
-        BaseDecoder(F76DecTemplates.DMGT).listen(dmgt_listener, listen_only=True),
-        BaseDecoder(F76DecTemplates.OMOD_WEAP).listen(mod_listener, listen_only=True)
+        BaseDecoder(F76DecTemplates.CURVE).listen(curv_grabber.listen, listen_only=True).on_finish_listener(
+            curv_grabber.resolve_jsons),
+        BaseDecoder(F76DecTemplates.GLOB).listen(glob_grabber.listen, listen_only=True),
+        BaseDecoder(F76DecTemplates.AVIF).listen(avif_grabber.listen, listen_only=True).on_finish_listener(
+            avif_grabber.resolve_loc_names),
+        BaseDecoder(F76DecTemplates.DMGT).listen(dmgt_grabber.listen, listen_only=True).on_finish_listener(
+            dmgt_grabber.resolve_loc_names),
+        BaseDecoder(F76DecTemplates.KYWD).listen(kywd_grabber.listen, listen_only=True),
+        BaseDecoder(F76DecTemplates.EXPL).listen(expl_grabber.listen, listen_only=True),
+        BaseDecoder(F76DecTemplates.PROJECTILES).listen(proj_grabber.listen, listen_only=True).on_finish_listener(
+            proj_grabber.resolve_loc_names),
+        BaseDecoder(F76DecTemplates.AMMO).listen(ammo_grabber.listen, listen_only=True).on_finish_listener(
+            ammo_grabber.resolve_loc_names),
+        BaseDecoder(F76DecTemplates.MGEF).listen(mgef_grabber.listen, listen_only=True).on_finish_listener(
+            mgef_grabber.resolve_loc_names),
+        BaseDecoder(F76DecTemplates.SPEL).listen(spel_grabber.listen, listen_only=True).on_finish_listener(
+            spel_grabber.resolve_loc_names),
+        BaseDecoder(F76DecTemplates.ENCHANTMENTS).listen(ench_grabber.listen, listen_only=True).on_finish_listener(
+            ench_grabber.resolve_loc_names),
+        BaseDecoder(F76DecTemplates.HAZARDS).listen(hazd_grabber.listen, listen_only=True).on_finish_listener(
+            hazd_grabber.resolve_loc_names),
+        BaseDecoder(F76DecTemplates.ALCHEMY).listen(alch_grabber.listen, listen_only=True).on_finish_listener(
+            alch_grabber.resolve_loc_names),
+        BaseDecoder(F76DecTemplates.MSTT).listen(mstt_grabber.listen, listen_only=True),
+        BaseDecoder(F76DecTemplates.PERK).listen(perk_grabber.listen, listen_only=True).on_finish_listener(
+            perk_grabber.resolve_loc_names),
+        BaseDecoder(F76DecTemplates.OMOD_WEAP).listen(mod_grabber.listen, listen_only=True),
     ]
+
     master = config.get_string("ESM", "F76Master")
-    nw = config.get_string("ESM", "F76NW")
-    curve_path = config.get_string("Weapon.Mod", "CurveTablesPath")
-    json_path = Root.build_path(Root.RESOURCES, curve_path)
     exclude_props = [s.strip() for s in
                      config.get_string("Weapon.Mod", "ExcludeModsWithProps", allow_empty=True).split(",")]
     ignore_props = [s.strip() for s in config.get_string("Weapon.Mod", "IgnoreProps", allow_empty=True).split(",")]
     ignore_empty = config.get_bool("Weapon.Mod", "IgnoreEmptyMods")
+
     UnitSeparator.separate_and_decode_file(master, decoders)
-    UnitSeparator.separate_and_decode_file(nw, decoders)
-    for mod in mods.values():
-        mod.gather_properties(mods)
-        mod.replace_curves_ids(curv, json_path)
-        mod.resolve_dgm_types(dmgt)
-    table = [["ID", "Name", "ID", "AppType", "Property", "Val1", "Val2", "Curve"]]
-    for mod in mods.values():
+    expl_grabber.resolve_projectiles(proj_grabber.proj)
+    expl_grabber.resolve_enchantments(ench_grabber.ench)
+    expl_grabber.resolve_objects(hazd_grabber.hazd, alch_grabber.alch, mstt_grabber.mstt)
+    mod_grabber.resolve_mods()
+    mod_table = [
+        ["ID", "Name", "LocalizedName", "ID", "AttachPoint", "TargetIds", "AppType", "Property", "Val1", "Val2",
+         "Enchantment", "Curve"]]
+    for mod in mod_grabber.mods.values():
         if mod.contains_props(exclude_props):
             continue
-        mod.as_csv_table(table, ignore_props, ignore_empty)
-    return table
+        mod.as_csv_table(mod_table, ignore_props, ignore_empty)
+    return mod_table, perk_grabber.build_csv_table(), spel_grabber.build_csv_table()
 
 
 if __name__ == '__main__':
     config = Config()
-    table = prepare_weapon_mods_table(config)
+    mods, perks, spells = prepare_weapon_mods_table(config)
     delimiter = config.get_string("CSV", "Delimiter", 1)
-    path = config.build_result_path(config.get_string("Weapon.Mod", "CSVName"), "csv")
-    CSV.build_table(path, table, delimiter)
+    mod_path = config.build_result_path(config.get_string("Weapon.Mod", "CSVName"), "csv")
+    perk_path = config.build_result_path(config.get_string("Perk", "CSVName"), "csv")
+    spell_path = config.build_result_path(config.get_string("Spell", "CSVName"), "csv")
+    CSV.build_table(mod_path, mods, delimiter)
+    CSV.build_table(perk_path, perks, delimiter)
+    CSV.build_table(spell_path, spells, delimiter)
     print("\nSuccess\n")

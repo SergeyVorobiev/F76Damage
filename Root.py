@@ -2,10 +2,16 @@ import os
 
 ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
 RESOURCES = os.path.join(ROOT_DIR, "Resources")
+CMD_DIR = os.path.join(ROOT_DIR, "CMD")
+JSON_DIR = os.path.join(RESOURCES, os.path.join("Extracted", os.path.join("misc", os.path.join("curvetables", "json"))))
 
 
 def build_root_path(names):
     return build_path(ROOT_DIR, names)
+
+
+def build_cmd_path(names):
+    return build_path(CMD_DIR, names)
 
 
 def build_path(root, names):

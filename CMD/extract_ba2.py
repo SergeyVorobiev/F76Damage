@@ -5,11 +5,12 @@ sys.path.append("..")
 
 from CMD.Config import Config
 
-if __name__ == '__main__':
+
+def extract(file_path_key, result_folder_path_key):
     config = Config()
     path_to_archive = config.get_string("BA", "Archive2Path")
-    path_to_file = config.get_string("BA", "BAFilePath")
-    result_folder = config.get_string("BA", "ResultFolder")
+    path_to_file = config.get_string("BA", file_path_key)
+    result_folder = config.get_string("BA", result_folder_path_key)
     cmd = f"{path_to_archive} {path_to_file} -extract={result_folder}"
     print("Starting to extract files")
     print(f"Path to archive {path_to_archive}")
@@ -19,3 +20,7 @@ if __name__ == '__main__':
         # print(proc.stdout.read())
         pass
     print("Done")
+
+
+if __name__ == '__main__':
+    extract("LocPath", "ResultFolder")

@@ -16,6 +16,7 @@ class AbstractDecoder:
         self.__unit = UnitData(UKey(start_key), UKey(end_key), max_unit_length, size_func)
         self.__listener = None
         self.__only_listener = False
+        self.__on_finish_listener = None
         self._categories = [Category.from_union(ucat) for ucat in categories]
         self._header = []
         self._table = []
@@ -37,6 +38,7 @@ class AbstractDecoder:
         if self.__filter_func is not None and not self.__filter_func(unit):
             return
         if self.__listener is not None:
+            self.check_max_size(unit)
             self.__listener(unit)
         if not self.__only_listener:
             result = {}
@@ -62,9 +64,13 @@ class AbstractDecoder:
     def decoded(self, unit: bytes, result: {}):
         pass
 
-    @abstractmethod
     def on_finish(self):
-        pass
+        if self.__on_finish_listener is not None:
+            self.__on_finish_listener()
+
+    def on_finish_listener(self, listener):
+        self.__on_finish_listener = listener
+        return self
 
     def listen(self, listener, listen_only: bool = False):
         self.__only_listener = listen_only
@@ -81,7 +87,7 @@ class AbstractDecoder:
 
     def check_max_size(self, unit: bytes):
         if unit.__len__() == self.__unit.max_unit_length:
-            message = f"Found a unit with max block length, {self.__unit.max_unit_length} possibly is not enough"
+            message = f"({self.__unit.s_key.label}) Found a unit with max block length, {self.__unit.max_unit_length} possibly is not enough"
             cprintln(message, pc.b_yellow, pc.magenta)
 
     def get_data(self):

@@ -47,9 +47,13 @@ class Config:
             print(f"Please use True / False for key '{key}' in category [{category}]")
             exit(-7)
 
-    def build_result_path(self, name, ext):
+    def build_result_path(self, name, ext, root=""):
         name = name.split("\\")
         name[len(name) - 1] += ("." + ext)
         result_folder = self.get_string("RESULT_FOLDER", "Path").split("\\")
         result_folder += name
-        return Root.build_path("", result_folder)
+        return Root.build_path(root, result_folder)
+
+    def build_resources_path(self, category, key):
+        path = self.get_string(category, key).split("\\")
+        return Root.build_path(Root.RESOURCES, path)

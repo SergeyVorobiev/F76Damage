@@ -1,7 +1,40 @@
+import mmap
 import struct
+
+import Root
+from Code.Helpers.F76GroupParser import F76GroupParser
+from Code.Helpers.Global import Global
 
 
 class F76AInst():
+
+    @staticmethod
+    def get_ushort(unit: bytes, index=0):
+        return struct.unpack('<H', unit[index: index + 2])[0]
+
+    @staticmethod
+    def get_short(unit: bytes, index=0):
+        return struct.unpack('<h', unit[index: index + 2])[0]
+
+    @staticmethod
+    def get_uchar(unit: bytes, index=0):
+        return struct.unpack('<B', unit[index: index + 1])[0]
+
+    @staticmethod
+    def get_char(unit: bytes, index=0):
+        return struct.unpack('<b', unit[index: index + 1])[0]
+
+    @staticmethod
+    def get_uint(unit: bytes, index=0):
+        return struct.unpack('<I', unit[index: index + 4])[0]
+
+    @staticmethod
+    def get_int(unit: bytes, index=0):
+        return struct.unpack('<i', unit[index: index + 4])[0]
+
+    @staticmethod
+    def get_float(unit: bytes, index=0):
+        return struct.unpack('<f', unit[index: index + 4])[0]
 
     @staticmethod
     def look(unit: bytes, cat: (bytes, int), dictionary: {}, start_from=0, id_func=None):
@@ -14,8 +47,49 @@ class F76AInst():
         return hex(struct.unpack('<L', unit[start:start + 4])[0])[2:].zfill(8)
 
     @staticmethod
-    def get_name(unit: bytes):
-        return unit[30:].partition(b'\x00')[0].decode('latin-1')
+    def get_version(unit: bytes, start=20):
+        return F76AInst.get_uchar(unit, start)
+
+    @staticmethod
+    def get_id_and_resolve(unit, index, resolver):
+        id = ''
+        try:
+            id = F76AInst.get_id(unit, index)
+            return resolver[id], True
+        except:
+            return id, False
+
+    @staticmethod
+    def get_possible_ids(unit: bytes):
+        result = []
+        for i in range(unit.__len__() - 3):
+            result.append([F76AInst.get_id(unit, i), i])
+        return result
+
+    @staticmethod
+    def get_tags_count(unit: bytes):
+        try:
+            return struct.unpack('<H', F76GroupParser.get_group_segment(unit, b"KSIZ")[2:4])[0]
+        except:
+            return 0
+
+    @staticmethod
+    def get_name(unit: bytes, start=30):
+        return unit[start:].partition(b'\x00')[0].decode('latin-1')
+
+    @staticmethod
+    def get_full(unit: bytes):
+        try:
+            return F76GroupParser.get_group_segment(unit, b'FULL')[2:]
+        except:
+            return b''
+
+    @staticmethod
+    def get_description(unit: bytes):
+        try:
+            return F76GroupParser.get_group_segment(unit, b'DESC')[2:]
+        except:
+            return b''
 
     @staticmethod
     def run_through_getting_numbers(unit: bytes, category, fmt: str, start_from=0, is_print=False,
@@ -68,8 +142,43 @@ class F76AInst():
 
     @staticmethod
     def find_id(unit: bytes, idd, starts_from=0):
-        for i in range(starts_from, len(unit) - 4):
+        for i in range(starts_from, len(unit) - 3):
             if F76AInst.get_id(unit, i) == idd:
+                return i
+
+    @staticmethod
+    def find_float(unit: bytes, value, starts_from=0, epsilon = 0.000001):
+        for i in range(starts_from, len(unit) - 3):
+            found = F76AInst.get_float(unit, i)
+            if abs(found - value) <= epsilon:
+                return i
+
+    @staticmethod
+    def find_uint(unit: bytes, value, starts_from=0):
+        for i in range(starts_from, len(unit) - 3):
+            found = F76AInst.get_uint(unit, i)
+            if found == value:
+                return i
+
+    @staticmethod
+    def find_int(unit: bytes, value, starts_from=0):
+        for i in range(starts_from, len(unit) - 3):
+            found = F76AInst.get_int(unit, i)
+            if found == value:
+                return i
+
+    @staticmethod
+    def find_char(unit: bytes, value, starts_from=0):
+        for i in range(starts_from, len(unit) - 1):
+            found = F76AInst.get_char(unit, i)
+            if found == value:
+                return i
+
+    @staticmethod
+    def find_uchar(unit: bytes, value, starts_from=0):
+        for i in range(starts_from, len(unit) - 1):
+            found = F76AInst.get_uchar(unit, i)
+            if found == value:
                 return i
 
     @staticmethod
@@ -110,3 +219,34 @@ class F76AInst():
                             print("val2", r2)
                     except:
                         continue
+
+    @staticmethod
+    def resolve_localized_names(items: [], items_iter, bytes_getter, name_setter):
+        path = Global.config.build_resources_path("LOCALIZATION", "SeventySixEngPath")
+        with open(path, mode="rb") as f:
+            file_map = mmap.mmap(f.fileno(), access=mmap.ACCESS_READ, length=0, offset=0)
+            start = file_map.find(b"\x00Door\x00") + 1
+            for item in items_iter(items):
+                item_bytes = bytes_getter(item)
+                if item_bytes is not None:
+                    try:
+                        item_name = F76AInst.__get_name(file_map, start, item_bytes)
+                    except:
+                        item_name = item_bytes
+                    name_setter(item, item_name)
+
+    @staticmethod
+    def __get_name(file_map, start, full_id, encoding='latin-1'):
+        file_map.seek(0)
+        full_id_index = file_map.find(full_id)
+        position_bytes = file_map[full_id_index + 4: full_id_index + 8]
+        position = struct.unpack("<I", position_bytes)[0]
+        name_start_index = start + position
+        return file_map[name_start_index:].partition(b'\x00')[0].decode(encoding)
+
+    @staticmethod
+    def find_named_groups(unit, name, default_value=None):
+        try:
+            return F76GroupParser.find_groups(unit, name)[name]
+        except:
+            return default_value

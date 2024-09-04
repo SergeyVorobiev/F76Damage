@@ -76,31 +76,26 @@ class ModHelper:
                   103: "ModelSwap",
                   106: "DamageBonusMult",
                   107: "AimAssist",
-                  108: "?"}
+                  108: "WeightReduction"}
 
     @staticmethod
-    def get_props_size(unit):
+    def get_include_size_prop_size(unit):
+        data = F76GroupParser.get_group_segment(unit, b'DATA')
+        include_size = F76AInst.get_ushort(data, 2)
+        prop_size = F76AInst.get_ushort(data, 6)
+        return include_size, prop_size
 
-        try:
-            return F76GroupParser.find_from_group_by_index(unit, b'DATA', "<h", 6)
-        except:
-            return 0
-
-    @staticmethod
-    def get_includes_size(unit):
-
-        try:
-            return F76GroupParser.find_from_group_by_index(unit, b'DATA', "<h", 2)
-        except:
-            return 0
+    co = 0
 
     @staticmethod
     def get_weap_properties(unit: bytes, need_properties=None):
-
+        ModHelper.co += 1
         name = F76AInst.get_name(unit)
         if name.startswith("Debug") or name.startswith("TestAudio"):
-            return
+            return None, None, None
+        full_name = F76AInst.get_full(unit)
         segment = F76GroupParser.get_group_segment(unit, b'WEAP')
+        attach_id = F76AInst.get_id(segment, 2)
         length = len(segment)
         block_size = 24
         start_block = 10
@@ -108,15 +103,11 @@ class ModHelper:
         end = 0
         result = []
         includes = []
-        include_size = ModHelper.get_includes_size(unit)
-        prop_size = ModHelper.get_props_size(unit)
+        include_size, prop_size = ModHelper.get_include_size_prop_size(unit)
         if include_size == 0 and prop_size == 0:
             # print("Does not have includes and properties")
-            return
+            return None, full_name, attach_id
 
-        # Attach point
-        # attach_point = hex(struct.unpack('<I', segment[2: 6])[0])
-        # print("Attach point:", attach_point)
         parent_slots = struct.unpack('<I', segment[6: 10])[0]
         # print("Parrent slots:", parent_slots)
 
@@ -131,6 +122,7 @@ class ModHelper:
             start = start_block + i_block_size * inc
             includes.append(F76AInst.get_id(segment, start))
             end = start + i_block_size
+
         if end > 0:
             start_block = end
         result.append({'Includes': includes})
@@ -172,5 +164,5 @@ class ModHelper:
             result.append({"ValType": v_type, "FunType": ModHelper.fun_types[f_type], "Prop": p_name, "Val1": val1,
                            "Val2": val2, "TabID": c_table})
         if len(includes) == 0 and len(result) == 1:
-            return None
-        return result
+            return None, None, None
+        return result, full_name, attach_id

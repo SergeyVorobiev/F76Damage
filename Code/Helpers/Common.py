@@ -17,8 +17,29 @@ def get_chunks(chunks, rows_size):
     return ranges
 
 
-def convert_file_to_raw_bytes(path: GPaths, dest_path):
-    with open(path.value, mode="rb") as f:
+def convert_file_to_raw_bytes_g_path(g_path: GPaths, dest_path):
+    convert_file_to_raw_bytes(g_path.value, dest_path)
+
+
+def convert_file_to_raw_bytes(path: str, dest_path):
+    with open(path, mode="rb") as f:
         unit = [str(line) for line in f.readlines()]
         with open(dest_path, "w") as wf:
             wf.writelines(unit)
+
+
+def get_file_as_lines(path: str):
+    with open(path, mode="rb") as f:
+        unit = [str(line) for line in f.readlines()]
+    return unit
+
+
+def get_file_as_lines2(path: str):
+    with open(path, mode="rb") as f:
+        unit = f.read().split(b"\n")
+    return unit
+
+
+def get_file(path: str):
+    with open(path, mode='rb') as f:
+        return f.read()
