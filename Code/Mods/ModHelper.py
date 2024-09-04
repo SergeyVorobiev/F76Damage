@@ -159,8 +159,8 @@ class ModHelper:
                 val2 = round(val2, 3)
             p_name = ModHelper.prop_types.get(prop, '')
             if len(p_name) == 0:
-                cprintln(f"Can't get name for property {prop}", pc.red, is_bold=True)
-                p_name = str(prop)
+                cprintln(f"{F76AInst.get_id(unit)} Can't get name for property {prop}", pc.red, is_bold=True)
+                p_name = "prop" + str(prop)
             result.append({"ValType": v_type, "FunType": ModHelper.fun_types[f_type], "Prop": p_name, "Val1": val1,
                            "Val2": val2, "TabID": c_table})
         if len(includes) == 0 and len(result) == 1:

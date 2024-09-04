@@ -1,3 +1,4 @@
+import csv
 import sys
 
 sys.path.append("..")
@@ -21,9 +22,10 @@ def build_creature_health_table(config):
 
 
 if __name__ == '__main__':
+    print("Starting to build creature's health")
     config = Config()
     result_path = config.build_result_path(config.get_string('Creature.Health', 'CSVName'), "csv")
     delimiter = config.get_string("CSV", 'Delimiter', 1)
     table = build_creature_health_table(config)
-    CSV.build_table(result_path, table, delimiter)
-    print("Creature health - Success")
+    CSV.build_table(result_path, table, delimiter, quoting=csv.QUOTE_MINIMAL)
+    print("Creature's health - Success\n")

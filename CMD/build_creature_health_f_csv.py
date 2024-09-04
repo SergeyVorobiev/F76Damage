@@ -7,6 +7,7 @@ from CMD.Config import Config
 from Code.CurveTables.CreatureHealth import CreatureHealth
 
 if __name__ == '__main__':
+    print("Starting to build creature's health with formulas")
     config = Config()
     name = config.get_string('Creature.Health', 'CSVFName')
     result_path = config.build_result_path(name, "csv")
@@ -27,4 +28,4 @@ if __name__ == '__main__':
                                                   delimiter=delimiter, chunks=1, use_name_in_each_cell=True,
                                                   f_language=fl.index(lang), dot_for_floats=is_dot,
                                                   sheet_name=sheet_name, name_cell=name_cell, level_cell=level_cell)
-    print("Creature health formula - Success")
+    print("Creature health formula - Success\n")

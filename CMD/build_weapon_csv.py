@@ -1,3 +1,4 @@
+import os
 import sys
 
 sys.path.append("..")
@@ -211,7 +212,8 @@ def parse_weapon_data(config):
         BaseDecoder(F76DecTemplates.MSTT).listen(mstt_grabber.listen, listen_only=True),
         BaseDecoder(F76DecTemplates.EQUP).listen(e_type_listener, listen_only=True),
     ]
-    master = config.get_string("ESM", "F76Master")
+    f76_folder = config.get_string("ESM", "F76Folder")
+    master = f76_folder + os.sep + config.get_string("ESM", "F76Master")
     UnitSeparator.separate_and_decode_file(master, decoders)
     expl_grabber.resolve_projectiles(proj_grabber.proj)
     expl_grabber.resolve_enchantments(ench_grabber.ench)
@@ -241,17 +243,19 @@ def parse_weapon_data(config):
 
 
 if __name__ == '__main__':
+    print("Starting to build weapon's data")
     config = Config()
     sort = config.get_string("Weapon", "Sort")
     path = config.build_result_path(config.get_string("Weapon", "CSVName"), "csv")
-    r_path = config.build_result_path(config.get_string("Weapon", "CSVRange"), "csv")
-    m_path = config.build_result_path(config.get_string("Weapon", "CSVMelee"), "csv")
-    t_path = config.build_result_path(config.get_string("Weapon", "CSVThrown"), "csv")
-    u_path = config.build_result_path(config.get_string("Weapon", "CSVUnarmed"), "csv")
+    # r_path = config.build_result_path(config.get_string("Weapon", "CSVRange"), "csv")
+    # m_path = config.build_result_path(config.get_string("Weapon", "CSVMelee"), "csv")
+    # t_path = config.build_result_path(config.get_string("Weapon", "CSVThrown"), "csv")
+    # u_path = config.build_result_path(config.get_string("Weapon", "CSVUnarmed"), "csv")
     delimiter = config.get_string("CSV", "Delimiter", 1)
     table, range_table, melee_table, thrown_table, unarmed_table = parse_weapon_data(config)
     CSV.save_table(path, table, delimiter)
-    CSV.save_table(r_path, range_table, delimiter)
-    CSV.save_table(m_path, melee_table, delimiter)
-    CSV.save_table(t_path, thrown_table, delimiter)
-    CSV.save_table(u_path, unarmed_table, delimiter)
+    # CSV.save_table(r_path, range_table, delimiter)
+    # CSV.save_table(m_path, melee_table, delimiter)
+    # CSV.save_table(t_path, thrown_table, delimiter)
+    # CSV.save_table(u_path, unarmed_table, delimiter)
+    print("Success\n")

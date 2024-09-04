@@ -4,9 +4,9 @@ import csv
 class CSV:
 
     @staticmethod
-    def build_table(path: str, table, delimiter):
+    def build_table(path: str, table, delimiter, quoting=csv.QUOTE_NONNUMERIC):
         with open(path, 'w', newline='') as csvfile:
-            write = csv.writer(csvfile, delimiter=delimiter, quoting=csv.QUOTE_NONNUMERIC)
+            write = csv.writer(csvfile, delimiter=delimiter, quoting=quoting)
             write.writerows(table)
 
     @staticmethod

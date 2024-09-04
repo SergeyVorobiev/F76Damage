@@ -8,6 +8,7 @@ import Root
 from CMD.Config import Config
 
 if __name__ == '__main__':
+    print("Starting to build creature's resistance with formulas")
     config = Config()
     name = config.get_string('Creature.Resistance', 'CSVFName')
     result_path = config.build_result_path(name, "csv")
@@ -28,4 +29,4 @@ if __name__ == '__main__':
                                                       delimiter=delimiter, chunks=1, use_name_in_each_cell=True,
                                                       f_language=fl.index(lang), dot_for_floats=is_dot,
                                                       sheet_name=sheet_name, name_cell=name_cell, level_cell=level_cell)
-    print("Creature resistance formula - Success")
+    print("Creature resistance formula - Success\n")

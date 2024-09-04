@@ -54,7 +54,7 @@ class MGEFGrabber(UnitListener):
             ability = F76AInst.get_id(data, 134)
             result["ability"] = ability  # SPEL
             if ability != '00000000':
-                print("Ability is found " + idd)
+                print("\nAbility is found " + idd + "\n")
             result["perk"] = F76AInst.get_id(data, 142)
         except:
             g = F76GroupParser.find_groups(unit, b'DATA')[b'DATA'][0]

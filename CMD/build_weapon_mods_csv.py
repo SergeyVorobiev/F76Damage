@@ -1,3 +1,4 @@
+import os
 import sys
 
 sys.path.append("..")
@@ -36,8 +37,6 @@ def prepare_weapon_mods_table(config):
     expl_grabber = ExplosionGrabber(curv_grabber.curv, dmgt_grabber.dmgt)
     proj_grabber = ProjectileGrabber(expl_grabber.expl)
     ammo_grabber = AmmoGrabber(kywd_grabber.kywd, proj_grabber.proj)
-
-
 
     # Contains not resolved perk ids
     mgef_grabber = MGEFGrabber(avif_grabber.avif, kywd_grabber.kywd, proj_grabber.proj, expl_grabber.expl)
@@ -83,7 +82,8 @@ def prepare_weapon_mods_table(config):
         BaseDecoder(F76DecTemplates.OMOD_WEAP).listen(mod_grabber.listen, listen_only=True),
     ]
 
-    master = config.get_string("ESM", "F76Master")
+    f76_folder = config.get_string("ESM", "F76Folder")
+    master = f76_folder + os.sep + config.get_string("ESM", "F76Master")
     exclude_props = [s.strip() for s in
                      config.get_string("Weapon.Mod", "ExcludeModsWithProps", allow_empty=True).split(",")]
     ignore_props = [s.strip() for s in config.get_string("Weapon.Mod", "IgnoreProps", allow_empty=True).split(",")]
@@ -105,6 +105,7 @@ def prepare_weapon_mods_table(config):
 
 
 if __name__ == '__main__':
+    print("Starting to build weapon mods data")
     config = Config()
     mods, perks, spells = prepare_weapon_mods_table(config)
     delimiter = config.get_string("CSV", "Delimiter", 1)

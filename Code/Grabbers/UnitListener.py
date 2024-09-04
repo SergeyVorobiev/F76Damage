@@ -58,9 +58,9 @@ class UnitListener:
             return item[key]
 
         def name_setter(item, name):
-            if self.print and name.__len__() < 100:
+            if self.print:
                 print("".ljust(100), end='\r')
-                print(name, end='\r')
+                print(name.split("\n")[0][0:100], end='\r')
             item[key] = name
 
         def items_iter(items):

@@ -1,3 +1,4 @@
+import csv
 import sys
 
 sys.path.append("..")
@@ -17,10 +18,11 @@ def build_creature_resistance_table(config):
 
 
 if __name__ == '__main__':
+    print("Starting to build creature's resistance")
     config = Config()
     name = config.get_string('Creature.Resistance', 'CSVName')
     result_path = config.build_result_path(name, "csv")
     delimiter = config.get_string("CSV", 'Delimiter', 1)
     table = build_creature_resistance_table(config)
-    CSV.build_table(result_path, table, delimiter)
-    print("Creature resistance - Success")
+    CSV.build_table(result_path, table, delimiter, quoting=csv.QUOTE_MINIMAL)
+    print("Creature resistance - Success\n")

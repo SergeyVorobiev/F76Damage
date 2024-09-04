@@ -1,0 +1,12 @@
+@echo off
+python extract_ba2.py
+python extract_localization_files.py
+python build_creature_health_csv.py
+python build_creature_health_f_csv.py
+python build_creature_names_csv.py
+python build_creature_resistance_csv.py
+python build_creature_resistance_f_csv.py
+python combine_health_res_csv.py
+python build_weapon_csv.py
+python build_weapon_mods_csv.py
+pause

@@ -25,6 +25,9 @@ A thing in RPGs, players worry most about is damage. Being a big fan of Bethesda
 Fallout universe in particular, I built this simple click-and-see calculator to determine the best weapon 
 for every situation.
 
+SPREADSHEET CALCULATOR IS DEPRECATED! Please use [web version](https://github.com/SergeyVorobiev/F76DamageReact) or
+ [datasheet](https://docs.google.com/spreadsheets/d/1ww8BxPfFMoS6idciAYDvekcAP9siSKzTDqFFtZ6Gs88/edit?usp=sharing).
+
 By using this Google spreadsheet calculator you can calculate the power of any weapon against any creature.
 
 ![Google spreadsheet calculator](Resources/Images/fss.png)
@@ -212,6 +215,25 @@ you can run several data generators from within CMD folder (py or python):
 
 Use [Config](CMD/config.ini) to change / specify paths and other settings.
 
+These scripts use ZeniMax Archive2.exe which you can find in 'CreationKit/Tools/Archive2' inside of
+[![CreationKit](https://img.shields.io/badge/CreationKit-000000?logo=steam&logoColor=fff&style=flat)](https://store.steampowered.com/app/1946160/Fallout_4_Creation_Kit/). A path to this archive has to be specified in [Config](CMD/config.ini) ([BA] Archive2Path)
+
+To generate every csvs locally, specify 'F76Folder' in [Config](CMD/config.ini), (path to a game folder),
+and then run:
+
+```console
+> generate_all_locally.bat
+```
+Result csv files can be found in [Outcomes](CMD/Outcomes) folder.
+
+Extracted game files can be found in [Resources](Resources/Extracted) folder.
+
+To extract localization files:
+
+```console
+>python extract_localization_files.py
+```
+
 To generate weapon data, scripts use an incorporated decoder of .esm files.
 
 To generate creature data, scripts use 'curve_table' json files, which are already presented in
@@ -221,10 +243,6 @@ To generate up-to-date 'curve_table' json files:
 ```console
 >python extract_ba2.py
 ```
-
-This script uses ZeniMax Archive2.exe which you can find in 'CreationKit/Tools/Archive2' inside of
-[![CreationKit](https://img.shields.io/badge/CreationKit-000000?logo=steam&logoColor=fff&style=flat)](https://store.steampowered.com/app/1946160/Fallout_4_Creation_Kit/). A path to this archive you need to specify in [Config](CMD/config.ini) ([BA] Archive2Path)
-
 
 To generate names of all creatures in csv format:
 ```console

@@ -7,6 +7,7 @@ from CMD.Config import Config
 from Code.CurveTables.CreatureHealth import CreatureHealth
 
 if __name__ == '__main__':
+    print("Starting to build creature's names")
     config = Config()
     name = config.get_string('Creature.Names', 'CSVName')
     result_path = config.build_result_path(name, "csv")
@@ -15,4 +16,4 @@ if __name__ == '__main__':
     creature_health = CreatureHealth(json_path)
     dicts = creature_health.build_dictionaries()
     build_names(result_path, dicts)
-    print("Creature names - Success")
+    print("Creature names - Success\n")

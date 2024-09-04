@@ -47,6 +47,10 @@ class F76AInst():
         return hex(struct.unpack('<L', unit[start:start + 4])[0])[2:].zfill(8)
 
     @staticmethod
+    def get_size(unit: bytes, start=4):
+        return F76AInst.get_uint(unit, start)
+
+    @staticmethod
     def get_version(unit: bytes, start=20):
         return F76AInst.get_uchar(unit, start)
 
@@ -147,7 +151,7 @@ class F76AInst():
                 return i
 
     @staticmethod
-    def find_float(unit: bytes, value, starts_from=0, epsilon = 0.000001):
+    def find_float(unit: bytes, value, starts_from=0, epsilon=0.000001):
         for i in range(starts_from, len(unit) - 3):
             found = F76AInst.get_float(unit, i)
             if abs(found - value) <= epsilon:

@@ -82,8 +82,11 @@ class PerkGrabber(UnitListener):
             print(f"Can't get v-type ({v_type}) for {idd}")
             return ""
         if v_type == 1:
-            epfd = F76GroupParser.get_group_segment(effect_block, b'EPFD')
-            return F76AInst.get_float(epfd, 2)
+            try:
+                epfd = F76GroupParser.get_group_segment(effect_block, b'EPFD')
+                return F76AInst.get_float(epfd, 2)
+            except:
+                return 0
         if v_type == 3:
             epfd = F76GroupParser.get_group_segment(effect_block, b'EPFD')
             return F76AInst.get_id(epfd, 2)

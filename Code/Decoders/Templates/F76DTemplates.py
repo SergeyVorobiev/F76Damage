@@ -54,7 +54,7 @@ class F76DecTemplates(Enum):
 
     CURVE = get_default(GroupKey.F76_CURV)
 
-    AVIF = get_default(GroupKey.F76_AVIF)
+    AVIF = get_default(GroupKey.F76_AVIF, length=30000)
 
     AMMO = get_default(GroupKey.F76_AMMO)
 
