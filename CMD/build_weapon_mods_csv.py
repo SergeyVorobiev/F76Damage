@@ -39,7 +39,8 @@ def prepare_weapon_mods_table(config):
     ammo_grabber = AmmoGrabber(kywd_grabber.kywd, proj_grabber.proj)
 
     # Contains not resolved perk ids
-    mgef_grabber = MGEFGrabber(avif_grabber.avif, kywd_grabber.kywd, proj_grabber.proj, expl_grabber.expl)
+    mgef_grabber = MGEFGrabber(avif_grabber.avif, kywd_grabber.kywd, proj_grabber.proj, expl_grabber.expl,
+                               dmgt_grabber.dmgt)
     spel_grabber = SpelGrabber(mgef_grabber.mgef, curv_grabber.curv, avif_grabber.avif, glob_grabber.glob)
     ench_grabber = EnchGrabber(mgef_grabber.mgef, curv_grabber.curv, avif_grabber.avif, glob_grabber.glob)
 

@@ -63,6 +63,7 @@ def resolve_damage(curv_grabber, weapons_table, dmgt):
                     result["type"] = dmgt['00060a87']
                 else:
                     result["type"] = dmgt[damage[0]]
+                result["id"] = damage[2]
                 all.append(result)
         weapon['DAMAGE'] = all
 
@@ -177,7 +178,8 @@ def parse_weapon_data(config):
     expl_grabber = ExplosionGrabber(curv_grabber.curv, dmgt_grabber.dmgt)
     proj_grabber = ProjectileGrabber(expl_grabber.expl)
     ammo_grabber = AmmoGrabber(kywd_grabber.kywd, proj_grabber.proj)
-    mgef_grabber = MGEFGrabber(avif_grabber.avif, kywd_grabber.kywd, proj_grabber.proj, expl_grabber.expl)
+    mgef_grabber = MGEFGrabber(avif_grabber.avif, kywd_grabber.kywd, proj_grabber.proj, expl_grabber.expl,
+                               dmgt_grabber.dmgt)
     spel_grabber = SpelGrabber(mgef_grabber.mgef, curv_grabber.curv, avif_grabber.avif, glob_grabber.glob)
     ench_grabber = EnchGrabber(mgef_grabber.mgef, curv_grabber.curv, avif_grabber.avif, glob_grabber.glob)
 

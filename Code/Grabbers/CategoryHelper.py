@@ -66,7 +66,20 @@ class CategoryHelper:
                 effect["glob_duration"] = ''
                 effect["glob_magnitude"] = ''
                 effect['d_curv'] = ''
+                effect['only_player'] = 'No' # Applies only for players
                 segment = F76GroupParser.get_segments_between(unit, b'EFID', b'CODV', starts_from=efid_range[0] - 4)[0]
+
+                # Conditions
+                try:
+                    ctdas = F76GroupParser.get_group_segment(segment, b'CTDA', group_index=-1)
+                    for ctda in ctdas:
+                        con_type = F76AInst.get_int(ctda, 2) # 0 - equal to
+                        con_value = F76AInst.get_float(ctda, 6)
+                        con_func = F76AInst.get_int(ctda, 10) # 828 / 60 Subject.get_is_player
+                        if con_type == 0 and con_value == 1.0 and con_func == 828:
+                            effect['only_player'] = 'Yes'
+                except:
+                    ...
 
                 # Actor value
                 maga = F76GroupParser.get_group_segment_or_def(segment, b'MAGA')

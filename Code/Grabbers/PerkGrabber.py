@@ -7,7 +7,7 @@ e_type_name = {256: "Ability", 512: "Function"}
 v_type_name = {1: "Float", 3: "List", 4: "Activate", 5: "Spell", 8: "Actor", 9: "Item"}
 operation = {
     1: "SetValue", 2: "AddValue", 3: "MulValue", 5: "MulAddValue", 6: "Abs", 8: "AddItem", 9: "AddActivate",
-    10: "SetSpell", 12: "AddValueToActor", 13: "MultiplyActorValueMultiply?", 14: "MulAddValueToActor",
+    10: "SetSpell", 12: "AddValueToActor", 13: "MultiplyActorValueMultiply", 14: "MulAddValueToActor",
     16: "SetItem"
 }
 

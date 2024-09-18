@@ -6,12 +6,13 @@ from Code.Helpers.F76GroupParser import F76GroupParser
 
 
 class MGEFGrabber(UnitListener):
-    def __init__(self, avif, kywd, proj, expl, print=True):
+    def __init__(self, avif, kywd, proj, expl, dmgt, print=True):
         super().__init__(print)
         self.mgef = {}
         self.avif = avif
         self.kywd = kywd
         self.proj = proj
+        self.dmgt = dmgt
         self.expl = expl
         self.number = 0
         self.label = 'MGEF'
@@ -28,6 +29,7 @@ class MGEFGrabber(UnitListener):
         result["keywords"] = CategoryHelper.get_KWDA(unit, self.kywd, idd)
         try:
             data = F76GroupParser.get_group_segment(unit, b'DATA')
+            result["d_type"], success = F76AInst.get_id_and_resolve(data, 14, self.dmgt)
             result["resist"], success = F76AInst.get_id_and_resolve(data, 22, self.avif)
             result["actor_value1"], success = F76AInst.get_id_and_resolve(data, 74, self.avif)
             result["projectile"], success = F76AInst.get_id_and_resolve(data, 78, self.proj)
