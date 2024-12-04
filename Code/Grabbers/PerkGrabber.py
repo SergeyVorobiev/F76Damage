@@ -42,7 +42,10 @@ class PerkGrabber(UnitListener):
                 prke = F76GroupParser.get_group_segment(effect_block, b'PRKE')
                 type_index = F76AInst.get_ushort(prke, 1)
                 effect["e_type"] = e_type_name[type_index]
-                data = F76GroupParser.get_group_segment(effect_block, b'DATA')
+                try:
+                    data = F76GroupParser.get_group_segment(effect_block, b'DATA')
+                except:
+                    continue
                 if type_index == 256:
                     effect['v_type'] = 0
                     effect["spell"], success = F76AInst.get_id_and_resolve(data, 2, self.spel)

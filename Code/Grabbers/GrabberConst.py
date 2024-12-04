@@ -88,6 +88,7 @@ entry_names = {
     69: "SneakingSpell",
     76: "OutgoingExplosionLimbDamage",
     79: "VATSAttackActionPoints",
+    80: "ReflectDamageChance",
     82: "KillExp",
     85: "ArmorRating",
     87: "HarvestIngredients",
@@ -180,5 +181,8 @@ entry_names = {
     195: "MaxBarterCurrency",
     196: "BodyPartDamageMult",
     197: "ApplyOnKillParticipationSpell",
-    198: "198",
+    198: "198", # TODO:
+    199: "199",
+    200: "200",
+    201: "201",
 }

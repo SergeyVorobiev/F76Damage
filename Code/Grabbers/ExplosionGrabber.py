@@ -22,6 +22,7 @@ class ExplosionGrabber(UnitListener):
         result["id"] = idd
         result["name"] = name
         result["enchantment"] = ""
+        result["damage_mult"] = 0
         try:
             result["enchantment"] = F76AInst.get_id(F76GroupParser.get_group_segment(unit, b'EITM'), 2)
         except:
@@ -33,6 +34,10 @@ class ExplosionGrabber(UnitListener):
             if object_id != '00000000' and object_id != idd:
                 result["object"] = object_id
             result["projectile"] = F76AInst.get_id(data, 22)
+            exp_mul = F76AInst.get_float(data, data.__len__() - 4)
+            if exp_mul < 0.001:
+                exp_mul = 0
+            result["damage_mult"] = exp_mul
             if version > 163:
                 result["exp_curv"], success = F76AInst.get_id_and_resolve(data, 26, self.curv)
                 result["force"] = F76AInst.get_float(data, 30)

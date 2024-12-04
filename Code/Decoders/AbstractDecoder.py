@@ -4,6 +4,7 @@ from abc import abstractmethod
 from Code.Decoders.Categories.Category import Category
 from Code.Decoders.Categories.UCat import UCat
 from Code.Helpers.ColorPrint import cprintln, pc
+from Code.Helpers.F76AInst import F76AInst
 from Code.Keys.GroupKey import GroupKey
 from Code.Keys.UKey import UKey
 from Code.Units.UnitData import UnitData
@@ -87,7 +88,12 @@ class AbstractDecoder:
 
     def check_max_size(self, unit: bytes):
         if unit.__len__() == self.__unit.max_unit_length:
-            message = f"({self.__unit.s_key.label}) Found a unit with max block length, {self.__unit.max_unit_length} possibly is not enough"
+            _id = ""
+            try:
+                _id = F76AInst.get_id(unit)
+            except:
+                ...
+            message = f"({self.__unit.s_key.label}) Found a unit (id: {_id}) with max block length, {self.__unit.max_unit_length} possibly is not enough"
             cprintln(message, pc.b_yellow, pc.magenta)
 
     def get_data(self):

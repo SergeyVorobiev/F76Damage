@@ -31,8 +31,11 @@ class ModHelper:
                   33: "MinConDegree",
                   34: "MaxConDegree",
                   35: "ConeIncrease",
+                  39: "RecoilDiminishSpringForce",
+                  40: "RecoilDiminishSightsMult",
                   41: "RecoilMaxDegree",
                   42: "RecoilMinDegree",
+                  43: "RecoilHipMult",
                   44: "RecoilShotsForRunaway",
                   45: "RecoilArcDeg",
                   46: "RecoilArcRotateDeg",
@@ -76,7 +79,10 @@ class ModHelper:
                   103: "ModelSwap",
                   106: "DamageBonusMult",
                   107: "AimAssist",
-                  108: "WeightReduction"}
+                  108: "WeightReduction",
+                  109: "109", # TODO:
+                  111: "111",
+                  112: "112",}
 
     @staticmethod
     def get_include_size_prop_size(unit):
